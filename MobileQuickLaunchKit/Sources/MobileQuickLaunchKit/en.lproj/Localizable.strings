@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Satyam Tripathi on 12/12/23.
+  
+*/
+
+
+"helloWorld" = "Hello world!";
+"signIn" = "Sign in";
+"emailOrUsername" = "Email or User name";
+"password" = "Password";
+"forgetPassword" = "Forgot Password ?";
+"signInOptionMsg" = "Or sign in With";
+"signInWithFaceId" = "Sign-in with Face ID";
+"signInWithFaceIdMsg" = "Look directly at the front camera to use face ID";
+"dontHaveAccount" = "Don’t have account ?";
+"signUp" = "Sign Up";
+"email" = "Email";
+"fullName" = "Full Name";
+"confirmPassword" = "Confirm Password";
+"alreadyHaveAccount" = "Already have an account ?";
+"forgetPassword1" = "Forgot Password";
+"forgetPasswordMsg" = "Opps. It happens to the best of us. Input your email address to fix the issue.";
+"sendOTP" = "Send OTP";
+"otpVerification" = "OTP Verification";
+"otpVerificationMsg" = "Copy the verification code in your authy application to verify this account recovery";
+"verifyOTP" = "Verify OTP";
+"setNewPassword" = "Set new password";
+"setNewPasswordMsg" = "Enter your new password below and check the hint while setting it.";
+"submitPassword" = "Submit password";
+"newPassword" = "New password";
+"confirmNewPassword" = "Confirm new password";
+"invalidEmailOrUsername" = "Please enter a valid email or username.";
+"invalidFullname" = "The fullname needs to consist of at least 3 characters.";
+"invalidPassword" = "The password needs to consist of at least 8 characters.";
+"invalidEmail" = "Please enter a valid email address.";
+"invalidPhone" = "Please enter a valid phone number.";
+"invalidConfirmPassword" = "Passwords do not match. Please re-enter.";
+"noInternetConnection" = "Please check your internet connection and try again.";
+"somethingWentWrong" = "Oops! Something went wrong. Please try again.";
+"error" = "Error";
+"invalidOTP" = "The OTP needs to consist of 6 characters.";
+"faceIDReason" = "Please use Face ID to log in to your account.";
+"settings" = "Settings";
+"account" = "Account";
+"editProfile" = "Edit Profile";
+"changePassword" = "Change Password";
+"privacy" = "Privacy";
+"logout" = "Logout";
+"name" = "Name";
+"username" = "Username";
+"phoneNumber" = "Phone Number";
+"email" = "Email";
+"save" = "Save";
+"other" = "Other";
+"help" = "Help";
+"aboutUs" = "About us";
+"profileUpdatedSuccessfully" = "Profile Updated Successfully";
+"profileImageUpdatedSuccessfully" = "Profile Image Updated Successfully";
+"appName" = "MobileQuickLaunchKit";
+"profile" = "Profile";
+"passwordChangedMsg" = "Password Changed Successfully";
+"alert" = "Alert";
+
+
