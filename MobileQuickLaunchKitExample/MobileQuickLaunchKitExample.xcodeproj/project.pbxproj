@@ -41,7 +41,7 @@
 		2AD977EB2B50193A00D6BA13 /* SideMenuHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHomeView.swift; sourceTree = "<group>"; };
 		2AD977ED2B501AA800D6BA13 /* SideMenuSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuSettingsView.swift; sourceTree = "<group>"; };
 		2AD977EF2B50219600D6BA13 /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
-		2ADA3CF92B72042400159B94 /* MobileQuickLaunchKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MobileQuickLaunchKit; path = ../../MobileQuickLaunchKit; sourceTree = "<group>"; };
+		2ADA3CFE2B72073600159B94 /* MobileQuickLaunchKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MobileQuickLaunchKit; path = ../../MobileQuickLaunchKit; sourceTree = "<group>"; };
 		4A7D50BA2B340DBA006E04EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AAADE012B4E977900AB9A6E /* BottomTabNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +79,7 @@
 			children = (
 				2AC03DD42B5824DC004F07AA /* GoogleService-Info.plist */,
 				2A8AE3242B2320A800C5F362 /* MobileQuickLaunchKitExample */,
-				4A32DBCE2B55022B0085D2A6 /* Packages */,
+				2ADA3CFD2B7206DF00159B94 /* Packages */,
 				2A8AE3232B2320A800C5F362 /* Products */,
 				4A8F45582B26CC010040707C /* Frameworks */,
 			);
@@ -179,10 +179,10 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		4A32DBCE2B55022B0085D2A6 /* Packages */ = {
+		2ADA3CFD2B7206DF00159B94 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				2ADA3CF92B72042400159B94 /* MobileQuickLaunchKit */,
+				2ADA3CFE2B72073600159B94 /* MobileQuickLaunchKit */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
