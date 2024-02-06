@@ -26,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A522A442B720EAE0074EE9D /* MobileQuickLaunchKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MobileQuickLaunchKit; path = ../../MobileQuickLaunchKit; sourceTree = "<group>"; };
 		2A8AE3222B2320A800C5F362 /* MobileQuickLaunchKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileQuickLaunchKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8AE3252B2320A800C5F362 /* MobileQuickLaunchKitExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileQuickLaunchKitExampleApp.swift; sourceTree = "<group>"; };
 		2A8AE3272B2320A800C5F362 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		2AD977EB2B50193A00D6BA13 /* SideMenuHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHomeView.swift; sourceTree = "<group>"; };
 		2AD977ED2B501AA800D6BA13 /* SideMenuSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuSettingsView.swift; sourceTree = "<group>"; };
 		2AD977EF2B50219600D6BA13 /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
-		2ADA3CFE2B72073600159B94 /* MobileQuickLaunchKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MobileQuickLaunchKit; path = ../../MobileQuickLaunchKit; sourceTree = "<group>"; };
 		4A7D50BA2B340DBA006E04EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AAADE012B4E977900AB9A6E /* BottomTabNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A522A432B720E930074EE9D /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				2A522A442B720EAE0074EE9D /* MobileQuickLaunchKit */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 		2A83156C2B5955350054E2EF /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +87,7 @@
 			children = (
 				2AC03DD42B5824DC004F07AA /* GoogleService-Info.plist */,
 				2A8AE3242B2320A800C5F362 /* MobileQuickLaunchKitExample */,
-				2ADA3CFD2B7206DF00159B94 /* Packages */,
+				2A522A432B720E930074EE9D /* Packages */,
 				2A8AE3232B2320A800C5F362 /* Products */,
 				4A8F45582B26CC010040707C /* Frameworks */,
 			);
@@ -177,14 +185,6 @@
 				2AD977E42B5007B000D6BA13 /* SideMenuView.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		2ADA3CFD2B7206DF00159B94 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				2ADA3CFE2B72073600159B94 /* MobileQuickLaunchKit */,
-			);
-			path = Packages;
 			sourceTree = "<group>";
 		};
 		4A8F45582B26CC010040707C /* Frameworks */ = {
