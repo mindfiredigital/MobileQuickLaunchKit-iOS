@@ -21,6 +21,7 @@
 		2AD977EC2B50193A00D6BA13 /* SideMenuHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977EB2B50193A00D6BA13 /* SideMenuHomeView.swift */; };
 		2AD977EE2B501AA800D6BA13 /* SideMenuSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977ED2B501AA800D6BA13 /* SideMenuSettingsView.swift */; };
 		2AD977F02B50219600D6BA13 /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977EF2B50219600D6BA13 /* MenuButtonView.swift */; };
+		2ADA3CFB2B72051400159B94 /* MobileQuickLaunchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2ADA3CFA2B72051400159B94 /* MobileQuickLaunchKit */; };
 		4AAADE022B4E977900AB9A6E /* BottomTabNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAADE012B4E977900AB9A6E /* BottomTabNavigationView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ADA3CFB2B72051400159B94 /* MobileQuickLaunchKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +211,7 @@
 			);
 			name = MobileQuickLaunchKitExample;
 			packageProductDependencies = (
+				2ADA3CFA2B72051400159B94 /* MobileQuickLaunchKit */,
 			);
 			productName = MFMobileKitExample;
 			productReference = 2A8AE3222B2320A800C5F362 /* MobileQuickLaunchKitExample.app */;
@@ -484,6 +487,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2ADA3CFA2B72051400159B94 /* MobileQuickLaunchKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MobileQuickLaunchKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2A8AE31A2B2320A800C5F362 /* Project object */;
 }
