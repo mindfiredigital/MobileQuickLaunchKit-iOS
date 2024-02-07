@@ -6,9 +6,10 @@ Introducing MobileQuickLaunchKit, a powerful SwiftUI package designed to elevate
 
 1. [Modules](./Modules.md)
 2. [Prerequisites](#prerequisites)
-3. [Usage](#usage)
-4. [Mockoon Setup Instructions](./docs/mockoon_setup.md)
-5. [API Setup](./docs/apis_setup.md)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Mockoon Setup Instructions](./docs/mockoon_setup.md)
+6. [API Setup](./docs/apis_setup.md)
 
 # Prerequisites
 There are certain requirements to be followed in order to use it:
@@ -16,22 +17,34 @@ There are certain requirements to be followed in order to use it:
 - SwiftUI
 - iOS >= 14.0
 
-
-# Usage  
+# Installation  
  ## 1. Adding The Package in your Project Target
- * Download the code
- * Find the package MobileQuickLaunchKit in Packages folder in a finder window.
- * Create a Packages folder inside root folder of your project and Drag the MobileQuickLaunchKit package into the Package folder of your App.
- * Go to build phases, Add MobileQuickLaunchKit in Link Binary With Libraries section
+ * Download the code as zip and extract it.
+ * Find the package MobileQuickLaunchKit folder inside the extracted folder.
+ * Click on File menu of the Xcode and select "Add Package Dependencies".
+ 
+     <img src="./docs/screenShots/add_package_1.png" >
+     
+ * On add package window, click on "Add Local", navigate to downoaded project folder and select MobileQuickLaunchKit folder as a package and then click on "Add Package".
+     
+     <img src="./docs/screenShots/add_package_2.png" >
+     
+ * Wait for the package to load dependencies, once it loads all the dependencies, again click on "Add Package". Now the package has been added to your project.
+      
+      <img src="./docs/screenShots/add_package_3.png" >
+      
+ * Go to build phases, Add MobileQuickLaunchKit in Link Binary With Libraries section. You can ignore this step if it is already added.
  * Register your App on Firbase console, download GoogleService-Info.plist file and add to your project target.
  * Open your project configuration: click the project name in the left tree view. Select your app from the TARGETS section, then select the Info tab, and expand the URL Types section.
 * Click the + button, and add a URL scheme for your reversed client ID. To find this value, open the GoogleService-Info.plist configuration file, and look for the REVERSED_CLIENT_ID key. Copy the value of that key, and paste it into the URL Schemes box on the configuration page. Leave the other fields untouched.
  * Now you can expand the package and access the files inside the package.
 
-## 2. Branding your App with Logo
+# Usage  
+
+## 1. Branding your App with Logo
 If you want to add your company logo into the views those are defined inside the package like: Splash Screen and Sign In screen. Add a company logo in your project's assest folder by naming it *"CompanyLogo"*. As the name is case sensitive so please add your company logo image into your asset folder with same name. It will automatically pick the image from your main project.
 
- ## 3. Initializing and Setting Theme
+ ## 2. Initializing and Setting Theme
  * Create a Theme object in a to configure the app theme, for example:
  
          let appTheme = Theme(
@@ -115,7 +128,7 @@ If you want to add your company logo into the views those are defined inside the
             }
         }
 
-## 4. MQLSignInView
+## 3. MQLSignInView
 MQLSignInView is a ready-to-use View integrated with all authentication screens like: Login, Sign up, Forget Password etc. You can simply add this view into your App and use the following features: SignIn, Sign up, Forget Password. You can present this view on the top of any View you created. Usage example:
 
     import SwiftUI
@@ -135,7 +148,7 @@ MQLSignInView is a ready-to-use View integrated with all authentication screens 
     }
         
 
-## 5. MQLSettingsView
+## 4. MQLSettingsView
 MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view contains following features: Edit Profile, Change Password, Privacy, Logout, Help, About Us. Usage example: 
 
     import SwiftUI
@@ -151,7 +164,7 @@ MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view
         }
     }
  
- ## 6. Initializing the App with Package ContentView and Authentication
+ ## 5. Initializing the App with Package ContentView and Authentication
  Here is a guide to intialize your App with MQLContentView and use authentication in your App.
  * import MobileQuickLaunchKit and GoogleSignIn in you main App.swift file
  * Create a ThemeManager object to pass the current theme as an environment Object
@@ -241,7 +254,7 @@ MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view
             }
         }
 
-## 7. Configuring App BaseURL 
+## 6. Configuring App BaseURL 
 Default baseURL is "http://localhost:3001/api/v1/" being used by the package. You can change this to your base URL at the time you initialize your app. For example:
 
         import SwiftUI
@@ -264,7 +277,7 @@ Default baseURL is "http://localhost:3001/api/v1/" being used by the package. Yo
             }
         }
 
-## 8. Sending HTTP Requests Using MQLBaseService Class
+## 7. Sending HTTP Requests Using MQLBaseService Class
 
 * Import the package and Extend MQLEndpoint class by defining a new class function for your endpoint like this:
 
@@ -319,7 +332,7 @@ Default baseURL is "http://localhost:3001/api/v1/" being used by the package. Yo
             }
         }
 
-## 9. Utilities Structs and Classes
+## 8. Utilities Structs and Classes
 ### 1. Connectivity
 Connectivity class has been written to check whether the device is connected to the internet or not. Usage example:
 

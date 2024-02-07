@@ -14,6 +14,7 @@
 		2AC03DD52B5824DC004F07AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC03DD42B5824DC004F07AA /* GoogleService-Info.plist */; };
 		2AC03DD82B58DC1B004F07AA /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC03DD72B58DC1B004F07AA /* ThemeManager.swift */; };
 		2AC03DDB2B590C9D004F07AA /* Theme+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC03DDA2B590C9D004F07AA /* Theme+Extensions.swift */; };
+		2AC269962B516D8A0044CDE2 /* MobileQuickLaunchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2AC269952B516D8A0044CDE2 /* MobileQuickLaunchKit */; };
 		2AD977E02B50076A00D6BA13 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977DF2B50076A00D6BA13 /* HomeView.swift */; };
 		2AD977E32B5007A100D6BA13 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977E22B5007A100D6BA13 /* SideMenu.swift */; };
 		2AD977E52B5007B000D6BA13 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977E42B5007B000D6BA13 /* SideMenuView.swift */; };
@@ -21,12 +22,12 @@
 		2AD977EC2B50193A00D6BA13 /* SideMenuHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977EB2B50193A00D6BA13 /* SideMenuHomeView.swift */; };
 		2AD977EE2B501AA800D6BA13 /* SideMenuSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977ED2B501AA800D6BA13 /* SideMenuSettingsView.swift */; };
 		2AD977F02B50219600D6BA13 /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD977EF2B50219600D6BA13 /* MenuButtonView.swift */; };
-		2ADA3CFB2B72051400159B94 /* MobileQuickLaunchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2ADA3CFA2B72051400159B94 /* MobileQuickLaunchKit */; };
 		4AAADE022B4E977900AB9A6E /* BottomTabNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAADE012B4E977900AB9A6E /* BottomTabNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A522A442B720EAE0074EE9D /* MobileQuickLaunchKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MobileQuickLaunchKit; path = ../../MobileQuickLaunchKit; sourceTree = "<group>"; };
+		2A51D3552B736C4D00249267 /* Packages.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Packages.md; sourceTree = "<group>"; };
+		2A51D3562B736C5E00249267 /* MobileQuickLaunchKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MobileQuickLaunchKit; path = ../../MobileQuickLaunchKit; sourceTree = "<group>"; };
 		2A8AE3222B2320A800C5F362 /* MobileQuickLaunchKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileQuickLaunchKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8AE3252B2320A800C5F362 /* MobileQuickLaunchKitExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileQuickLaunchKitExampleApp.swift; sourceTree = "<group>"; };
 		2A8AE3272B2320A800C5F362 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -51,17 +52,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ADA3CFB2B72051400159B94 /* MobileQuickLaunchKit in Frameworks */,
+				2AC269962B516D8A0044CDE2 /* MobileQuickLaunchKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A522A432B720E930074EE9D /* Packages */ = {
+		2A51D3542B736C3400249267 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				2A522A442B720EAE0074EE9D /* MobileQuickLaunchKit */,
+				2A51D3562B736C5E00249267 /* MobileQuickLaunchKit */,
+				2A51D3552B736C4D00249267 /* Packages.md */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -87,7 +89,7 @@
 			children = (
 				2AC03DD42B5824DC004F07AA /* GoogleService-Info.plist */,
 				2A8AE3242B2320A800C5F362 /* MobileQuickLaunchKitExample */,
-				2A522A432B720E930074EE9D /* Packages */,
+				2A51D3542B736C3400249267 /* Packages */,
 				2A8AE3232B2320A800C5F362 /* Products */,
 				4A8F45582B26CC010040707C /* Frameworks */,
 			);
@@ -211,7 +213,7 @@
 			);
 			name = MobileQuickLaunchKitExample;
 			packageProductDependencies = (
-				2ADA3CFA2B72051400159B94 /* MobileQuickLaunchKit */,
+				2AC269952B516D8A0044CDE2 /* MobileQuickLaunchKit */,
 			);
 			productName = MFMobileKitExample;
 			productReference = 2A8AE3222B2320A800C5F362 /* MobileQuickLaunchKitExample.app */;
@@ -489,7 +491,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2ADA3CFA2B72051400159B94 /* MobileQuickLaunchKit */ = {
+		2AC269952B516D8A0044CDE2 /* MobileQuickLaunchKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MobileQuickLaunchKit;
 		};
