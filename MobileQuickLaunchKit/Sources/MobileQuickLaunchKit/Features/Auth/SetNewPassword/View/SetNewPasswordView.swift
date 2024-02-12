@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 struct SetNewPasswordView: View {
     @EnvironmentObject var theme: Theme
@@ -39,11 +41,11 @@ struct SetNewPasswordView: View {
                         .padding(.top,5)
                     
                     //New Password Field
-                    SecureTextField(iconName: Icon.lock, text: $viewModel.passwordTextField, isSecure: $viewModel.isSecurePassword, placeholderName: "newPassword", error: $viewModel.passwordError)
+                    SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.passwordTextField, isSecure: $viewModel.isSecurePassword, placeholderName: "newPassword".localized(), error: $viewModel.passwordError)
                         .padding(.top, 20)
                     
                     //Confirm New Password Field
-                    SecureTextField(iconName: Icon.lock, text: $viewModel.confirmPasswordTextField, isSecure: $viewModel.isSecureConfirmPassword, placeholderName: "confirmNewPassword", error: $viewModel.confirmPasswordError)
+                    SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.confirmPasswordTextField, isSecure: $viewModel.isSecureConfirmPassword, placeholderName: "confirmNewPassword".localized(), error: $viewModel.confirmPasswordError)
                         .padding(.top, 20)
                     
                     Spacer()
@@ -53,7 +55,7 @@ struct SetNewPasswordView: View {
                         
                     } label: {
                         Text("submitPassword", bundle: .module)
-                            .themeButton()
+                            .themeButtonModifier()
                     }
                     .padding(.top, 20)
                     Spacer()
@@ -69,16 +71,10 @@ struct SetNewPasswordView: View {
                         self.isForgetPasswordModalPresented.toggle()
                     }
                 }
-                .showAlert(title: "error", isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage ?? "")
+                .showAlert(title: "error".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
                 .loader(isLoading: $viewModel.isLoading)
             }
         }
     }
     
-}
-
-#Preview {
-    SetNewPasswordView(isModalPresented: .constant(false), isOTPVerificationModalPresented: .constant(false), isForgetPasswordModalPresented: .constant(false))
-        .environment(\.locale, Locale(identifier: "en"))
-        .environmentObject(Theme.packageTheme)
 }

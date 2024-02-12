@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MQLCoreUI
 
 struct SocialSignInView: View {
     @ObservedObject var viewModel: SignInViewModel
@@ -15,17 +16,17 @@ struct SocialSignInView: View {
                 Spacer()
                 
                 // Google
-                CustomSocialButton(action: {
+                CustomSocialButton(image: Image(Icon.google, bundle: .module), action: {
                     viewModel.signInWithGoogle()
-                }, imageName: Icon.google)
+                })
                 .padding(.trailing, 10)
                 
                 // Apple
-                CustomSocialButton(action: {
+                CustomSocialButton(image: Image(Icon.apple, bundle: .module), action: {
                     if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
                         viewModel.signInWithAppleId(viewController: rootViewController)
                     }
-                }, imageName: Icon.apple)
+                })
                 .padding(.trailing, 10)
                 
                 Spacer()

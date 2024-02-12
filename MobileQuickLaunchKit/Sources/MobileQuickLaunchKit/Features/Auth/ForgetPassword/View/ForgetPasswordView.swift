@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 @available(iOS 14.0, *)
 struct ForgetPasswordView: View {
@@ -38,7 +40,7 @@ struct ForgetPasswordView: View {
                     .padding(.bottom, 30)
                 
                 //Email Field
-                ThemeTextField(placeholderText: "email", iconName: Icon.email, keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.emailError)
+                ThemeTextField(placeholderText: "email".localized(), icon: Image(Icon.email, bundle: .module), keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.emailError)
                 Spacer()
                 
                 //Send Otp button
@@ -46,7 +48,7 @@ struct ForgetPasswordView: View {
                     viewModel.sendOTP(email: viewModel.emailTextField)
                 } label: {
                     Text("sendOTP", bundle: .module)
-                        .themeButton()
+                        .themeButtonModifier()
                 }
                 .padding(.top, 20)
                 Spacer()
@@ -57,18 +59,11 @@ struct ForgetPasswordView: View {
         .onAppear {
             viewModel.observeForgetPasswordState()
         }
-        .showAlert(title: "error", isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage ?? "")
+        .showAlert(title: "error".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
         .loader(isLoading: $viewModel.isLoading)
         .fullScreenCover(isPresented: $viewModel.isOTPVerificationModalPresented) {
             OTPVerificationView(isModalPresented: $viewModel.isOTPVerificationModalPresented, isForgetPasswordModalPresented: $isModalPresented)
         }
     }
     
-}
-
-@available(iOS 14.0, *)
-#Preview {
-    ForgetPasswordView(isModalPresented: .constant(false))
-        .environment(\.locale, Locale(identifier: "en"))
-        .environmentObject(Theme.packageTheme)
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MQLCoreUI
 
 struct WebView: View {
     
@@ -20,9 +21,9 @@ struct WebView: View {
                 .ignoresSafeArea()
             VStack {
                 //Back Button
-                BackButtonWithTitle(action: {
+                BackButtonWithTitle(title: title.localized(), action: {
                     presentationMode.wrappedValue.dismiss()
-                }, title: title)
+                })
                 .padding(.leading, 10)
                 
                 if let url = URL(string: url) {

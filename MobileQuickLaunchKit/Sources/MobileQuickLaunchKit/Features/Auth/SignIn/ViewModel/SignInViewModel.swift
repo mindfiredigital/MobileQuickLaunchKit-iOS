@@ -10,6 +10,7 @@ import LocalAuthentication
 import GoogleSignIn
 import AuthenticationServices
 import CryptoKit
+import MQLCore
 
 final class SignInViewModel: NSObject, ObservableObject {
     
@@ -40,11 +41,11 @@ final class SignInViewModel: NSObject, ObservableObject {
         self.signInEventHandler?(.loading)
         
         var hasValidationError: Bool = false
-        if !Utilities.validateEmail(emailOrUsername) {
+        if !MQLValidations.isValidEmail(email: emailOrUsername) {
             self.signInEventHandler?(.emailValidationError(error: "invalidEmailOrUsername"))
             hasValidationError = true
         }
-        if !Utilities.validatePassword(password) {
+        if !MQLValidations.isStrongPassword(password: password) {
             self.signInEventHandler?(.passwordValidationError(error: "invalidPassword"))
             hasValidationError = true
         }
@@ -61,9 +62,9 @@ final class SignInViewModel: NSObject, ObservableObject {
                 
             case .success(let response):
                 //Save email, password and token to local storage
-                SecureUserDefaults.setEncrypted(emailOrUsername, forKey: LocalStorageKeys.emailOrUsername)
-                SecureUserDefaults.setEncrypted(password, forKey: LocalStorageKeys.password)
-                SecureUserDefaults.setEncrypted(response.data.token, forKey: LocalStorageKeys.token)
+                SecureUserDefaults.setValue(emailOrUsername, forKey: LocalStorageKeys.emailOrUsername)
+                SecureUserDefaults.setValue(password, forKey: LocalStorageKeys.password)
+                SecureUserDefaults.setValue(response.data.token, forKey: LocalStorageKeys.token)
                 MQLAppState.shared.setValues()
                 self.signInEventHandler?(.success(response: response))
             case .failure(let error):
@@ -106,11 +107,11 @@ final class SignInViewModel: NSObject, ObservableObject {
                     self.isAlertPresented = true
                     
                 case .emailValidationError(error: let error):
-                    self.usernameError = error
+                    self.usernameError = error.localized()
                     self.isLoading = false
                     
                 case .passwordValidationError(error: let error):
-                    self.passwordError = error
+                    self.passwordError = error.localized()
                     self.isLoading = false
                 }
             }
@@ -130,7 +131,7 @@ final class SignInViewModel: NSObject, ObservableObject {
         }
         Task {
             do {
-                try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: NSLocalizedString("faceIDReason", bundle: .module, comment: "") )
+                try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "faceIDReason".localized())
                 guard let email = MQLAppState.shared.email else {return}
                 guard let password = MQLAppState.shared.password else {return}
                 login(emailOrUsername: email, password: password)
@@ -178,7 +179,7 @@ final class SignInViewModel: NSObject, ObservableObject {
                         MQLAppState.shared.email = nil
                         MQLAppState.shared.password = nil
                         // Save token to local storage
-                        SecureUserDefaults.setEncrypted(response.data.token, forKey: LocalStorageKeys.token)
+                        SecureUserDefaults.setValue(response.data.token, forKey: LocalStorageKeys.token)
                         MQLAppState.shared.setValues()
                         self.googleSignInEventHandler?(.success)
                     case .failure(let error):
@@ -229,11 +230,11 @@ final class SignInViewModel: NSObject, ObservableObject {
     /// This method is used to store the apple email and fullname in local storage
     func storeAppleEmailAndFullName(appleIDCredential: ASAuthorizationAppleIDCredential) {
         // Save apple id email to keychain
-        SecureUserDefaults.setEncrypted(appleIDCredential.email, forKey: LocalStorageKeys.appleIdEmail)
+        SecureUserDefaults.setValue(appleIDCredential.email, forKey: LocalStorageKeys.appleIdEmail)
         MQLAppState.shared.appleIdEmail = appleIDCredential.email
         // Save apple id fullname to keychain
         let appleIdFullname = "\(appleIDCredential.fullName?.givenName ?? "") \(appleIDCredential.fullName?.familyName ?? "")"
-        SecureUserDefaults.setEncrypted(appleIdFullname, forKey: LocalStorageKeys.appleIdFullname)
+        SecureUserDefaults.setValue(appleIdFullname, forKey: LocalStorageKeys.appleIdFullname)
         MQLAppState.shared.appleIdFullName = appleIdFullname
     }
     
@@ -275,7 +276,7 @@ final class SignInViewModel: NSObject, ObservableObject {
                 MQLAppState.shared.email = nil
                 MQLAppState.shared.password = nil
                 // Save token to local storage
-                SecureUserDefaults.setEncrypted(response.data.token, forKey: LocalStorageKeys.token)
+                SecureUserDefaults.setValue(response.data.token, forKey: LocalStorageKeys.token)
                 MQLAppState.shared.setValues()
                 self.appleSignInEventHandler?(.success)
             case .failure(let error):

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MQLCoreUI
 
 struct SplashScreenView: View {
     @EnvironmentObject var theme: Theme

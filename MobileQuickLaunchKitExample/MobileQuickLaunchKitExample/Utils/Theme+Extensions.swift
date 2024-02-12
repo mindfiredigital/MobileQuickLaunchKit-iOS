@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import MobileQuickLaunchKit
+import MQLCoreUI
 
 // MARK: - Extension for defining predefined themes.
 @available(iOS 13.0, *)

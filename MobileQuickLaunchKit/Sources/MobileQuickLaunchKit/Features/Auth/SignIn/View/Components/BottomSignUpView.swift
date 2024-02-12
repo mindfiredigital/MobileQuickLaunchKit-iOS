@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MQLCoreUI
 
 struct BottomSignUpView: View {
     
@@ -17,7 +18,7 @@ struct BottomSignUpView: View {
             Text("dontHaveAccount", bundle: .module)
                 .modifier(theme.typography.body1Style(color: theme.colors.secondary))
             
-            Button(NSLocalizedString("signUp", bundle: .module, comment: "")) {
+            Button("signUp".localized()) {
                 isSignUpModalPresented.toggle()
             }
             .font(theme.typography.h4)

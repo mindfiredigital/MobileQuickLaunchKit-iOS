@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MobileQuickLaunchKit
+import MQLCoreUI
 
 
 struct SideMenuSettingsView: View {

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 struct ChangePasswordView: View {
     
@@ -21,17 +23,17 @@ struct ChangePasswordView: View {
                 VStack(alignment: .leading) {
                     
                     //Back Button with title
-                    BackButtonWithTitle(action: {
+                    BackButtonWithTitle(title: "changePassword".localized(), action: {
                         presentationMode.wrappedValue.dismiss()
-                    }, title: "changePassword")
+                    })
                     .padding(.trailing, 29)
                     
                     //New Password Field
-                    SecureTextField(iconName: Icon.lock, text: $viewModel.passwordTextField, isSecure: $viewModel.isSecurePassword, placeholderName: "newPassword", error: $viewModel.passwordError)
+                    SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.passwordTextField, isSecure: $viewModel.isSecurePassword, placeholderName: "newPassword".localized(), error: $viewModel.passwordError)
                         .padding(.top, 50)
                     
                     //Confirm New Password Field
-                    SecureTextField(iconName: Icon.lock, text: $viewModel.confirmPasswordTextField, isSecure: $viewModel.isSecureConfirmPassword, placeholderName: "confirmNewPassword", error: $viewModel.confirmPasswordError)
+                    SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.confirmPasswordTextField, isSecure: $viewModel.isSecureConfirmPassword, placeholderName: "confirmNewPassword".localized(), error: $viewModel.confirmPasswordError)
                         .padding(.top, 20)
                     Spacer()
                     //Submit password button
@@ -40,7 +42,7 @@ struct ChangePasswordView: View {
                         
                     } label: {
                         Text("submitPassword", bundle: .module)
-                            .themeButton()
+                            .themeButtonModifier()
                     }
                     .padding(.top, 40)
                     
@@ -56,7 +58,7 @@ struct ChangePasswordView: View {
                 .onAppear {
                     viewModel.observeResetPasswordState()
                 }
-                .showAlert(title: "appName", isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage ?? "")
+                .showAlert(title: "appName".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
                 .loader(isLoading: $viewModel.isLoading)
             }
         }

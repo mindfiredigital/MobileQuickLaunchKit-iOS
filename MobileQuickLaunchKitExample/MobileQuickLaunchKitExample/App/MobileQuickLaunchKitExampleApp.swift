@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
-import MobileQuickLaunchKit
 import GoogleSignIn
+import MobileQuickLaunchKit
+import MQLCore
 
 @main
 struct MobileQuickLaunchKitExampleApp: App {

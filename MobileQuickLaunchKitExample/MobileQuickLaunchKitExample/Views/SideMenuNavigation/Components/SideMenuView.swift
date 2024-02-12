@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MobileQuickLaunchKit
+import MQLCoreUI
 
 enum MenuRowType: Int, CaseIterable{
     case home = 0

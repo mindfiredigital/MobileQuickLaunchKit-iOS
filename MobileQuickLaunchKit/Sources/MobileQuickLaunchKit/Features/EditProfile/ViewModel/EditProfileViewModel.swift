@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MQLCore
 
 final class EditProfileViewModel: ObservableObject {
     @Published var profileImage: UIImage?

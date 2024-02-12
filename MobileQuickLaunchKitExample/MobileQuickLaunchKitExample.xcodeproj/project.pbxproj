@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A2F7F3D2B74E9AD00334A93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A2F7F3C2B74E9AD00334A93 /* GoogleService-Info.plist */; };
 		2A8AE3262B2320A800C5F362 /* MobileQuickLaunchKitExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8AE3252B2320A800C5F362 /* MobileQuickLaunchKitExampleApp.swift */; };
 		2A8AE3282B2320A800C5F362 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8AE3272B2320A800C5F362 /* MainView.swift */; };
 		2A8AE32A2B2320AA00C5F362 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8AE3292B2320AA00C5F362 /* Assets.xcassets */; };
 		2A8AE32D2B2320AA00C5F362 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8AE32C2B2320AA00C5F362 /* Preview Assets.xcassets */; };
-		2AC03DD52B5824DC004F07AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AC03DD42B5824DC004F07AA /* GoogleService-Info.plist */; };
+		2ABCCAFE2B763848000C2D52 /* MQLCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABCCAFD2B763848000C2D52 /* MQLCore */; };
+		2ABCCB012B767199000C2D52 /* MQLCoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2ABCCB002B767199000C2D52 /* MQLCoreUI */; };
 		2AC03DD82B58DC1B004F07AA /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC03DD72B58DC1B004F07AA /* ThemeManager.swift */; };
 		2AC03DDB2B590C9D004F07AA /* Theme+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC03DDA2B590C9D004F07AA /* Theme+Extensions.swift */; };
 		2AC269962B516D8A0044CDE2 /* MobileQuickLaunchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2AC269952B516D8A0044CDE2 /* MobileQuickLaunchKit */; };
@@ -26,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A2F7F3C2B74E9AD00334A93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A51D3552B736C4D00249267 /* Packages.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Packages.md; sourceTree = "<group>"; };
 		2A51D3562B736C5E00249267 /* MobileQuickLaunchKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MobileQuickLaunchKit; path = ../../MobileQuickLaunchKit; sourceTree = "<group>"; };
 		2A8AE3222B2320A800C5F362 /* MobileQuickLaunchKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileQuickLaunchKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,7 +36,8 @@
 		2A8AE3272B2320A800C5F362 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2A8AE3292B2320AA00C5F362 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A8AE32C2B2320AA00C5F362 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2AC03DD42B5824DC004F07AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2ABCCAFC2B7637EF000C2D52 /* MQLCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MQLCore; path = ../../MobileQuickLaunchKit/MQLCore; sourceTree = "<group>"; };
+		2ABCCAFF2B767083000C2D52 /* MQLCoreUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MQLCoreUI; path = ../../MobileQuickLaunchKit/MQLCoreUI; sourceTree = "<group>"; };
 		2AC03DD72B58DC1B004F07AA /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		2AC03DDA2B590C9D004F07AA /* Theme+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Extensions.swift"; sourceTree = "<group>"; };
 		2AD977DF2B50076A00D6BA13 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ABCCAFE2B763848000C2D52 /* MQLCore in Frameworks */,
+				2ABCCB012B767199000C2D52 /* MQLCoreUI in Frameworks */,
 				2AC269962B516D8A0044CDE2 /* MobileQuickLaunchKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				2A51D3562B736C5E00249267 /* MobileQuickLaunchKit */,
+				2ABCCAFC2B7637EF000C2D52 /* MQLCore */,
+				2ABCCAFF2B767083000C2D52 /* MQLCoreUI */,
 				2A51D3552B736C4D00249267 /* Packages.md */,
 			);
 			path = Packages;
@@ -87,7 +95,7 @@
 		2A8AE3192B2320A800C5F362 = {
 			isa = PBXGroup;
 			children = (
-				2AC03DD42B5824DC004F07AA /* GoogleService-Info.plist */,
+				2A2F7F3C2B74E9AD00334A93 /* GoogleService-Info.plist */,
 				2A8AE3242B2320A800C5F362 /* MobileQuickLaunchKitExample */,
 				2A51D3542B736C3400249267 /* Packages */,
 				2A8AE3232B2320A800C5F362 /* Products */,
@@ -214,6 +222,8 @@
 			name = MobileQuickLaunchKitExample;
 			packageProductDependencies = (
 				2AC269952B516D8A0044CDE2 /* MobileQuickLaunchKit */,
+				2ABCCAFD2B763848000C2D52 /* MQLCore */,
+				2ABCCB002B767199000C2D52 /* MQLCoreUI */,
 			);
 			productName = MFMobileKitExample;
 			productReference = 2A8AE3222B2320A800C5F362 /* MobileQuickLaunchKitExample.app */;
@@ -259,7 +269,7 @@
 			files = (
 				2A8AE32D2B2320AA00C5F362 /* Preview Assets.xcassets in Resources */,
 				2A8AE32A2B2320AA00C5F362 /* Assets.xcassets in Resources */,
-				2AC03DD52B5824DC004F07AA /* GoogleService-Info.plist in Resources */,
+				2A2F7F3D2B74E9AD00334A93 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +501,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2ABCCAFD2B763848000C2D52 /* MQLCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MQLCore;
+		};
+		2ABCCB002B767199000C2D52 /* MQLCoreUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MQLCoreUI;
+		};
 		2AC269952B516D8A0044CDE2 /* MobileQuickLaunchKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MobileQuickLaunchKit;

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MQLCore
 
 
 final class ChangePasswordViewModel: ObservableObject {
@@ -30,7 +31,7 @@ final class ChangePasswordViewModel: ObservableObject {
         self.setPasswordEventHandler?(.loading)
         var hasValidationError: Bool = false
         
-        if !Utilities.validatePassword(password) {
+        if !MQLValidations.isStrongPassword(password: password) {
             self.setPasswordEventHandler?(.passwordValidationError(error: "invalidPassword"))
             hasValidationError = true
         }

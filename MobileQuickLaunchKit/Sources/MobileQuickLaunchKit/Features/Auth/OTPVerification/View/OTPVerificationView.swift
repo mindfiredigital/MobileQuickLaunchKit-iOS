@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 @available(iOS 14.0, *)
 struct OTPVerificationView: View {
@@ -60,7 +62,7 @@ struct OTPVerificationView: View {
                 
                 // OTP error text
                 if let otpError = viewModel.otpError, !otpError.isEmpty {
-                    Text(NSLocalizedString(otpError, bundle: .module, comment: ""))
+                    Text(otpError.localized())
                         .foregroundColor(theme.colors.error)
                         .font(theme.typography.body1)
                 }
@@ -73,7 +75,7 @@ struct OTPVerificationView: View {
                     viewModel.verifyOTP()
                 } label: {
                     Text("verifyOTP", bundle: .module)
-                        .themeButton()
+                        .themeButtonModifier()
                 }
                 
                 .padding(.top, 20)
@@ -87,7 +89,7 @@ struct OTPVerificationView: View {
         .onAppear {
             viewModel.observeVerifyOtpState()
         }
-        .showAlert(title: "error", isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage ?? "")
+        .showAlert(title: "error".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
         .loader(isLoading: $viewModel.isLoading)
         .fullScreenCover(isPresented: $viewModel.isSetNewPasswordModalPresented) {
             SetNewPasswordView(isModalPresented: $viewModel.isSetNewPasswordModalPresented, isOTPVerificationModalPresented: $isModalPresented, isForgetPasswordModalPresented: $isForgetPasswordModalPresented)
@@ -108,12 +110,6 @@ struct OTPVerificationView: View {
     }
 }
 
-@available(iOS 14.0, *)
-#Preview {
-    OTPVerificationView(isModalPresented: .constant(false), isForgetPasswordModalPresented: .constant(false))
-        .environment(\.locale, Locale(identifier: "en"))
-        .environmentObject(Theme.packageTheme)
-}
 
 
 

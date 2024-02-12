@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MobileQuickLaunchKit
+import MQLCoreUI
 
 struct SideMenuHomeView: View {
     @EnvironmentObject var theme : Theme

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 struct EditProfileView: View {
     
@@ -21,9 +23,9 @@ struct EditProfileView: View {
                 VStack{
                     //Back Button with title
                     
-                    BackButtonWithTitle(action: {
+                    BackButtonWithTitle(title: "profile".localized(), action: {
                         presentationMode.wrappedValue.dismiss()
-                    }, title: "profile")
+                    })
                     .padding(.trailing, 29)
                     
                     // Profile Image Section
@@ -59,15 +61,15 @@ struct EditProfileView: View {
                     }
                     
                     //Name Text Field
-                    ThemeTextField(placeholderText: "name", iconName: Icon.user, text: $viewModel.nameTextField, error: $viewModel.nameError)
+                    ThemeTextField(placeholderText: "name".localized(), icon: Image(Icon.user, bundle: .module), text: $viewModel.nameTextField, error: $viewModel.nameError)
                         .padding(.top, 30)
                     
                     //Phone Number Text Field
-                    ThemeTextField(placeholderText: "phoneNumber", iconName: Icon.phone,  keyBoardType: .phonePad, text: $viewModel.phoneNumberTextField, error: $viewModel.phoneNumberError, isPhoneField: true)
+                    ThemeTextField(placeholderText: "phoneNumber".localized(), icon: Image(Icon.phone, bundle: .module),  keyBoardType: .phonePad, text: $viewModel.phoneNumberTextField, error: $viewModel.phoneNumberError, isPhoneField: true)
                         .padding(.top, 15)
                     
                     //Email Text Field
-                    ThemeTextField(placeholderText: "email", iconName: Icon.email, keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.emailError)
+                    ThemeTextField(placeholderText: "email".localized(), icon: Image(Icon.email, bundle: .module), keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.emailError)
                         .padding(.top, 15)
                         .disabled(true)
                     
@@ -78,7 +80,7 @@ struct EditProfileView: View {
                         viewModel.onTappedSave()
                     } label: {
                         Text("save", bundle: .module)
-                            .themeButton()
+                            .themeButtonModifier()
                     }
                     .padding(.top, 15)
                     
@@ -104,7 +106,7 @@ struct EditProfileView: View {
                                 viewModel.shouldPresentCamera = false
                             }), ActionSheet.Button.cancel()])
                         }
-                .showAlert(title: viewModel.alertTitle, isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage ?? "")
+                .showAlert(title: viewModel.alertTitle.localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
                 .loader(isLoading: $viewModel.isLoading)
             }
         }

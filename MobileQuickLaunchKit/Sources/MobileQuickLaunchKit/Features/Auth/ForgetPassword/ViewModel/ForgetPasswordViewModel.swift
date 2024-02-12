@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MQLCore
 
 final class ForgetPasswordViewModel: ObservableObject {
     @Published var forgetPasswordEventHandler:((_ event: ForgetPasswordEvents<ForgetPasswordResponse>) -> Void)?
@@ -24,7 +25,7 @@ final class ForgetPasswordViewModel: ObservableObject {
     func sendOTP(email: String) {
         self.forgetPasswordEventHandler?(.loading)
         
-        if !Utilities.validateEmail(email) {
+        if !MQLValidations.isValidEmail(email: email) {
             self.forgetPasswordEventHandler?(.emailValidationError(error: "invalidEmail"))
             return
         }
@@ -78,7 +79,7 @@ final class ForgetPasswordViewModel: ObservableObject {
                     self.isAlertPresented = true
                     
                 case .emailValidationError(error: let error):
-                    self.emailError = error
+                    self.emailError = error.localized()
                     self.isLoading = false
                 }
                 

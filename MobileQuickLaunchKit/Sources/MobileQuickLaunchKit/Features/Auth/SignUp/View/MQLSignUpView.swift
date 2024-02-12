@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 struct MQLSignUpView: View {
     
@@ -28,18 +30,18 @@ struct MQLSignUpView: View {
                         .padding(.bottom, 25)
                     
                     //Fullname field
-                    ThemeTextField(placeholderText: "fullName", iconName: Icon.user, text: $viewModel.fullnameTextField, error: $viewModel.fullnameError)
+                    ThemeTextField(placeholderText: "fullName".localized(), icon: Image(Icon.user, bundle: .module), text: $viewModel.fullnameTextField, error: $viewModel.fullnameError)
                         .padding(.bottom,(viewModel.fullnameError == nil) ? 20 : 0)
                     
                     //Email Field
-                    ThemeTextField(placeholderText: "email", iconName: Icon.user, keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.emailError)
+                    ThemeTextField(placeholderText: "email".localized(), icon: Image(Icon.user, bundle: .module), keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.emailError)
                     
                     //Password Field
-                    SecureTextField(iconName: Icon.lock, text: $viewModel.passwordTextField, isSecure: $viewModel.isSecurePassword, placeholderName: "password", error: $viewModel.passwordError)
+                    SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.passwordTextField, isSecure: $viewModel.isSecurePassword, placeholderName: "password".localized(), error: $viewModel.passwordError)
                         .padding(.top, 20)
                     
                     //Confirm Password Field
-                    SecureTextField(iconName: Icon.lock, text: $viewModel.confirmPasswordTextField, isSecure: $viewModel.isSecureConfirmPassword, placeholderName: "confirmPassword", error: $viewModel.confirmPasswordError)
+                    SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.confirmPasswordTextField, isSecure: $viewModel.isSecureConfirmPassword, placeholderName: "confirmPassword".localized(), error: $viewModel.confirmPasswordError)
                         .padding(.top, 20)
                     
                     //Sign Up button
@@ -47,7 +49,7 @@ struct MQLSignUpView: View {
                         viewModel.signUp(fullname: viewModel.fullnameTextField, email: viewModel.emailTextField, password: viewModel.passwordTextField, confirmPassword: viewModel.confirmPasswordTextField)
                     } label: {
                         Text("signUp", bundle: .module)
-                            .themeButton()
+                            .themeButtonModifier()
                     }
                     .padding(.top, 20)
                     
@@ -56,7 +58,7 @@ struct MQLSignUpView: View {
                     HStack{
                         Text("alreadyHaveAccount", bundle: .module)
                             .modifier(theme.typography.body1Style(color: theme.colors.secondary))
-                        Button(NSLocalizedString("signIn",bundle: .module, comment: "")){
+                        Button("signIn".localized()){
                             isModalPresented.toggle()
                         }
                         .font(theme.typography.h4)
@@ -77,13 +79,8 @@ struct MQLSignUpView: View {
                 }
             }
         }
-        .showAlert(title: "error", isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage ?? "")
+        .showAlert(title: "error".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
         .loader(isLoading: $viewModel.isLoading)
     }
 }
 
-#Preview {
-    MQLSignUpView(isModalPresented: .constant(false))
-        .environment(\.locale, Locale(identifier: "en"))
-        .environmentObject(Theme.packageTheme)
-}

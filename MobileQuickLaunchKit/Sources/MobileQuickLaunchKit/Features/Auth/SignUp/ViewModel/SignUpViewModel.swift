@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MQLCore
 
 final class SignUpViewModel: ObservableObject {
     
@@ -38,11 +39,11 @@ final class SignUpViewModel: ObservableObject {
             self.signUpEventHandler?(.fullnameValidationError(error: "invalidFullname"))
         }
         
-        if !Utilities.validateEmail(email) {
+        if !MQLValidations.isValidEmail(email: email) {
             self.signUpEventHandler?(.emailValidationError(error: "invalidEmail"))
             hasValidationError = true
         }
-        if !Utilities.validatePassword(password) {
+        if !MQLValidations.isStrongPassword(password: password) {
             self.signUpEventHandler?(.passwordValidationError(error: "invalidPassword"))
             hasValidationError = true
         }
@@ -66,9 +67,9 @@ final class SignUpViewModel: ObservableObject {
                 
             case .success(let response):
                 //Save email, password and token to local storage
-                SecureUserDefaults.setEncrypted(email, forKey: LocalStorageKeys.emailOrUsername)
-                SecureUserDefaults.setEncrypted(password, forKey: LocalStorageKeys.password)
-                SecureUserDefaults.setEncrypted(response.data.token, forKey: LocalStorageKeys.token)
+                SecureUserDefaults.setValue(email, forKey: LocalStorageKeys.emailOrUsername)
+                SecureUserDefaults.setValue(password, forKey: LocalStorageKeys.password)
+                SecureUserDefaults.setValue(response.data.token, forKey: LocalStorageKeys.token)
                 MQLAppState.shared.setValues()
                 self.signUpEventHandler?(.success(response: response))
             case .failure(let error):
@@ -113,19 +114,19 @@ final class SignUpViewModel: ObservableObject {
                     self.isAlertPresented = true
                     
                 case .emailValidationError(error: let error):
-                    self.emailError = error
+                    self.emailError = error.localized()
                     self.isLoading = false
                     
                 case .passwordValidationError(error: let error):
-                    self.passwordError = error
+                    self.passwordError = error.localized()
                     self.isLoading = false
                     
                 case .fullnameValidationError(error: let error):
-                    self.fullnameError = error
+                    self.fullnameError = error.localized()
                     self.isLoading = false
                     
                 case .confirmPasswordValidationError(error: let error):
-                    self.confirmPasswordError = error
+                    self.confirmPasswordError = error.localized()
                     self.isLoading = false
                 }
             }

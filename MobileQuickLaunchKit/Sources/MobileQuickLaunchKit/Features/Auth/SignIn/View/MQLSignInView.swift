@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 @available(iOS 14.0, *)
 public struct MQLSignInView: View {
@@ -34,13 +36,13 @@ public struct MQLSignInView: View {
                             .padding(.bottom, 25)
                         
                         //Email or Username Field
-                        ThemeTextField(placeholderText: "emailOrUsername", iconName: Icon.user, keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.usernameError)
+                        ThemeTextField(placeholderText: "emailOrUsername".localized(), icon: Image(Icon.user, bundle: .module), keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.usernameError)
                         
                         //Password Field
-                        SecureTextField(iconName: Icon.lock, text: $viewModel.passwordTextField, isSecure: $viewModel.isSecure, placeholderName: "password", error: $viewModel.passwordError)
+                        SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.passwordTextField, isSecure: $viewModel.isSecure, placeholderName: "password".localized(), error: $viewModel.passwordError)
                             .padding(.top, 15)
                         
-                        Button(NSLocalizedString("forgetPassword", bundle: .module, comment: "")){
+                        Button("forgetPassword".localized()){
                             viewModel.isForgetPasswordModalPresented.toggle()
                         }
                         .frame(maxWidth: .infinity,alignment: .trailing)
@@ -54,7 +56,7 @@ public struct MQLSignInView: View {
                             viewModel.login(emailOrUsername: viewModel.emailTextField, password: viewModel.passwordTextField)
                         } label: {
                             Text("signIn", bundle: .module)
-                                .themeButton()
+                                .themeButtonModifier()
                         }
                         .padding(.top, 15)
                         
@@ -99,7 +101,7 @@ public struct MQLSignInView: View {
                     self.isModalPresented = false
                 }
             }
-            .showAlert(title: "error", isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage ?? "")
+            .showAlert(title: "error".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
             .loader(isLoading: $viewModel.isLoading)
             .fullScreenCover(isPresented: $viewModel.isSignUpModalPresented) {
                 MQLSignUpView(isModalPresented: $viewModel.isSignUpModalPresented)
@@ -112,11 +114,4 @@ public struct MQLSignInView: View {
     }
     
     
-}
-
-@available(iOS 14.0, *)
-#Preview {
-    MQLSignInView(isModalPresented: .constant(false))
-        .environment(\.locale, Locale(identifier: "en"))
-        .environmentObject(Theme.packageTheme)
 }

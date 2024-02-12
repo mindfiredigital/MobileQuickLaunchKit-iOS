@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 
 class OTPVerificationViewModel: ObservableObject {

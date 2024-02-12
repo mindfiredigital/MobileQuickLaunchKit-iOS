@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import MobileQuickLaunchKit
+import MQLCoreUI
 
 @available(iOS 13.0, *)
 class ThemeManager: ObservableObject {

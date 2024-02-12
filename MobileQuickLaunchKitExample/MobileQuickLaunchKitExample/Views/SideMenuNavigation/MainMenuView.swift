@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MobileQuickLaunchKit
+import MQLCoreUI
 
 struct MainMenuView: View {
     @EnvironmentObject var theme : Theme

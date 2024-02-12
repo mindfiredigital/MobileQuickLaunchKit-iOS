@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import MQLCore
 
 
 final class SetNewPasswordViewModel: ObservableObject {
@@ -31,7 +31,7 @@ final class SetNewPasswordViewModel: ObservableObject {
         self.setPasswordEventHandler?(.loading)
         var hasValidationError: Bool = false
         
-        if !Utilities.validatePassword(password) {
+        if !MQLValidations.isStrongPassword(password: password) {
             self.setPasswordEventHandler?(.passwordValidationError(error: "invalidPassword"))
             hasValidationError = true
         }
@@ -92,11 +92,11 @@ final class SetNewPasswordViewModel: ObservableObject {
                     self.isAlertPresented = true
                     
                 case .passwordValidationError(error: let error):
-                    self.passwordError = error
+                    self.passwordError = error.localized()
                     self.isLoading = false
                     
                 case .confirmPasswordValidationError(error: let error):
-                    self.confirmPasswordError = error
+                    self.confirmPasswordError = error.localized()
                     self.isLoading = false
                 }
                 

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MQLCore
+import MQLCoreUI
 
 public struct MQLSettingsView: View {
     
@@ -33,14 +35,14 @@ public struct MQLSettingsView: View {
                         .padding(.top, 30)
                         .padding(.bottom, 25)
                     // Account Section
-                    IconNameView(title: "account", icon: Icon.account)
+                    IconNameView(title: "account".localized(), icon: Icon.account)
                     
                     //Accounts button
                     NavigationLink(
                         destination: EditProfileView(),
                         isActive: $viewModel.isEditProfileActive
                     ) {
-                        SettingsButton(title: "editProfile") {
+                        SettingsButton(title: "editProfile".localized()) {
                             viewModel.isEditProfileActive = true
                         }
                     }
@@ -50,7 +52,7 @@ public struct MQLSettingsView: View {
                         destination: ChangePasswordView(),
                         isActive: $viewModel.isChangePasswordActive
                     ) {
-                        SettingsButton(title: "changePassword") {
+                        SettingsButton(title: "changePassword".localized()) {
                             viewModel.isChangePasswordActive = true
                         }
                     }
@@ -60,7 +62,7 @@ public struct MQLSettingsView: View {
                         destination: WebView(url: $viewModel.webViewURL, title: $viewModel.webViewTitle),
                         isActive: $viewModel.isWebViewActive
                     ) {
-                        SettingsButton(title: "privacy") {
+                        SettingsButton(title: "privacy".localized()) {
                             viewModel.webViewURL = SettingsLinks.privacy
                             viewModel.isWebViewActive = true
                             viewModel.webViewTitle = "privacy"
@@ -68,7 +70,7 @@ public struct MQLSettingsView: View {
                     }
                    
                     //Logout
-                    SettingsButton(title: "logout") {
+                    SettingsButton(title: "logout".localized()) {
                         debugPrint("logout")
                         SecureUserDefaults.removeValue(forKey: LocalStorageKeys.token)
                         MQLAppState.shared.token = nil
@@ -76,7 +78,7 @@ public struct MQLSettingsView: View {
                     }
                     
                     // Other Section
-                    IconNameView(title: "other", icon: Icon.other)
+                    IconNameView(title: "other".localized(), icon: Icon.other)
                         .padding(.top, 30)
                     
                     //Help
@@ -84,7 +86,7 @@ public struct MQLSettingsView: View {
                         destination: WebView(url: $viewModel.webViewURL, title: $viewModel.webViewTitle),
                         isActive: $viewModel.isWebViewActive
                     ) {
-                        SettingsButton(title: "help") {
+                        SettingsButton(title: "help".localized()) {
                             viewModel.webViewURL = SettingsLinks.help
                             viewModel.isWebViewActive = true
                             viewModel.webViewTitle = "help"
@@ -95,7 +97,7 @@ public struct MQLSettingsView: View {
                         destination: WebView(url: $viewModel.webViewURL, title: $viewModel.webViewTitle),
                         isActive: $viewModel.isWebViewActive
                     ) {
-                        SettingsButton(title: "aboutUs") {
+                        SettingsButton(title: "aboutUs".localized()) {
                             viewModel.webViewURL = SettingsLinks.aboutUs
                             viewModel.isWebViewActive = true
                             viewModel.webViewTitle = "aboutUs"
