@@ -74,9 +74,9 @@ struct DebugPrints {
     static let invalidState = "Invalid state: A login callback was received, but no login request was sent."
 }
 
-struct SettingsLinks {
-    static let privacy = "https://www.mindfiresolutions.com/privacy-policy/"
-    static let aboutUs = "https://www.mindfiresolutions.com/news/"
-    static let help = "https://www.mindfiresolutions.com/contact-us/"
-    static let defaultURL = "https://www.google.com"
+public struct SettingsLinks {
+    public static var privacy = "https://www.google.co.in"
+    public static var aboutUs = "https://www.google.co.in"
+    public static var help = "https://www.google.co.in"
+    static let defaultURL = "https://www.google.co.in"
 }

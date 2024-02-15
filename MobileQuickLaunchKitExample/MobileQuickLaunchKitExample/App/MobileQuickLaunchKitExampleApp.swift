@@ -21,6 +21,11 @@ struct MobileQuickLaunchKitExampleApp: App {
         
         //Set you App Base URL
         MQLConstants.baseURL = "http://localhost:3001/api/v1/" // Your App's Base URL
+        
+        //Set your Setting page webview url's
+        SettingsLinks.privacy = "https://www.google.co.in"
+        SettingsLinks.aboutUs = "https://www.google.co.in"
+        SettingsLinks.help = "https://www.google.co.in"
     }
     
     var body: some Scene {
