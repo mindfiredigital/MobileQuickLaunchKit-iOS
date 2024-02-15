@@ -93,11 +93,11 @@ final class ChangePasswordViewModel: ObservableObject {
                     self.isAlertPresented = true
                     
                 case .passwordValidationError(error: let error):
-                    self.passwordError = error
+                    self.passwordError = error.localized()
                     self.isLoading = false
                     
                 case .confirmPasswordValidationError(error: let error):
-                    self.confirmPasswordError = error
+                    self.confirmPasswordError = error.localized()
                     self.isLoading = false
                 }
                 
