@@ -23,17 +23,6 @@ struct HomeView: View {
                 Text("Welcome")
                     .font(theme.typography.h2)
                     .foregroundColor(theme.colors.secondary)
-                Spacer()
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        Utilities.openShareSheet(activityItem: "Hi there!")
-                        
-                    }, label: {
-                        Text("Share")
-                            .padding(10)
-                    })
-                }
             }
         }
         .showToast(message: "Welcome", isPresented: $isPresented)

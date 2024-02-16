@@ -202,7 +202,7 @@ MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view
             }
         }
 
-## 5. Configuring App BaseURL 
+## 5. Configuring App BaseURL and Settings Link
 Default baseURL is "http://localhost:3001/api/v1/" being used by the package. You can change this to your base URL at the time you initialize your app. For example:
 
         import SwiftUI
@@ -214,6 +214,11 @@ Default baseURL is "http://localhost:3001/api/v1/" being used by the package. Yo
             init() {
                 //Set your base URL
                 MQLConstants.baseURL = "YOUR_BASE_URL"
+                
+                //Set your Setting page webview url's
+                SettingsLinks.privacy = "YOUR_PRIVACY_URL"
+                SettingsLinks.aboutUs = "YOUR_ABOUT_US_URL"
+                SettingsLinks.help = "YOUR_HELP_URL"
             }
             
             var body: some Scene {

@@ -34,7 +34,7 @@
 "confirmNewPassword" = "Confirm new password";
 "invalidEmailOrUsername" = "Please enter a valid email or username.";
 "invalidFullname" = "The fullname needs to consist of at least 3 characters.";
-"invalidPassword" = "The password needs to consist of at least 8 characters.";
+"invalidPassword" = "The password must be at least 8 characters, including at least 1 uppercase, 1 lowercase, and 1 special character.";
 "invalidEmail" = "Please enter a valid email address.";
 "invalidPhone" = "Please enter a valid phone number.";
 "invalidConfirmPassword" = "Passwords do not match. Please re-enter.";
