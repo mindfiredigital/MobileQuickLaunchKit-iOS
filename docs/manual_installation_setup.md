@@ -1,6 +1,6 @@
 # Manual Installation
 
-As it contains three separate packages MobileQuickLaunchKit, MQLCore and MQLCoreUI. Here MQLCore and MQLCoreUI are the independent packages but the package MobileQuickLaunchKit has dependency on these two independent packages. You can go through the [modules](./Modules.md) section for the detailed documentation and decide which package fits your requirements.
+As it contains three separate packages MobileQuickLaunchKit, MQLCore and MQLCoreUI. Here MQLCore and MQLCoreUI are the independent packages but the package MobileQuickLaunchKit has dependency on these two independent packages. You can go through the [modules](../Modules.md) section for the detailed documentation and decide which package fits your requirements.
 
 You can find these two independent packages: MQLCore and MQLCoreUI inside the MobileQuickLaunchKit folder
 

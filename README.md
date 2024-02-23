@@ -219,13 +219,13 @@ Default baseURL is "http://localhost:3001/api/v1/" being used by the package. Yo
 
 ## 6. MQLCore
 
-To find the detailed usage documentation for the package click [here](./MobileQuickLaunchKit/MQLCore/README.md)
+To find the detailed usage documentation for the package click [here](MQLCore/README.md)
 
   
 
 ## 7.  MQLCoreUI
 
-To find the detailed usage documentation for the package click [here](./MobileQuickLaunchKit/MQLCoreUI/README.md)
+To find the detailed usage documentation for the package click [here](MQLCoreUI/README.md)
 
   
 #
