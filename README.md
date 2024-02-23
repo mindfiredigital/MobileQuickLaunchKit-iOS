@@ -28,9 +28,9 @@ As it contains three separate packages MobileQuickLaunchKit, MQLCore and MQLCore
 
 You can find these two independent packages: MQLCore and MQLCoreUI inside the MobileQuickLaunchKit package.
 
--   File > Swift Packages > Add Package Dependency
--   Add `https://github.com/mindfiredigital/MobileQuickLaunchKit-iOS`
--   Select "Up to Next Major" with "0.1.0"
+* File > Swift Packages > Add Package Dependency
+* Add `https://github.com/mindfiredigital/MobileQuickLaunchKit-iOS`
+* Select "Up to Next Major" with "0.1.0"
 * Register your App on the Firebase console, download GoogleService-Info.plist file and add it to your project target.
 * Open your project configuration: click the project name in the left tree view. Select your app from the TARGETS section, then select the Info tab, and expand the URL Types section.
 * Click the + button, and add a URL scheme for your reversed client ID. To find this value, open the GoogleService-Info.plist configuration file, and look for the REVERSED_CLIENT_ID key. Copy the value of that key, and paste it into the URL Schemes box on the configuration page. Leave the other fields untouched.
@@ -67,7 +67,7 @@ MQLSignInView is a ready-to-use View integrated with all authentication screens 
 ## 3. MQLSettingsView
 
 MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view contains following features: Edit Profile, Change Password, Privacy, Logout, Help, About Us. Usage example:
-
+```
     import SwiftUI
     import MobileQuickLaunchKit
 
@@ -80,6 +80,7 @@ MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view
             }
         }
     }
+```
   
 
 ## 4. Initializing the App with Package ContentView and Authentication
@@ -87,13 +88,10 @@ MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view
 Here is a guide to intialize your App with MQLContentView and use authentication in your App.
 
 * import MobileQuickLaunchKit and GoogleSignIn in you main App.swift file
-
 * Create a ThemeManager object to pass the current theme as an environment Object
-
 * Initialize you App class and set your MQLAppState values.
-
 * Initialize MQLContentView by providing the main view of your App
-
+```
         import SwiftUI
         import MobileQuickLaunchKit
         import MQLCoreUI
@@ -116,11 +114,11 @@ Here is a guide to intialize your App with MQLContentView and use authentication
                     }
                 }
             }
-
+```
   
 
 * Here is an Example how to add Authentication to your App's MainView.swift:
-
+```
         import SwiftUI
         import MobileQuickLaunchKit
         import MQLCoreUI
@@ -159,11 +157,11 @@ Here is a guide to intialize your App with MQLContentView and use authentication
                 }
             }
         }
-
+```
   
 
 * Here is simply a text added in HomeView you can create your own.
-
+```
         import SwiftUI
         import MobileQuickLaunchKit
         import MQLCoreUI
@@ -183,13 +181,13 @@ Here is a guide to intialize your App with MQLContentView and use authentication
              }
          }
         }
-
+```
   
 
 ## 5. Configuring App BaseURL and Settings Link
 
 Default baseURL is "http://localhost:3001/api/v1/" being used by the package. You can change this to your base URL at the time you initialize your app. For example:
-
+```
     import SwiftUI
     import MobileQuickLaunchKit
     import MQLCore
@@ -216,7 +214,7 @@ Default baseURL is "http://localhost:3001/api/v1/" being used by the package. Yo
                 }
             }
         }
-
+```
   
 
 ## 6. MQLCore
@@ -230,9 +228,8 @@ To find the detailed usage documentation for the package click [here](./MobileQu
 To find the detailed usage documentation for the package click [here](./MobileQuickLaunchKit/MQLCoreUI/README.md)
 
   
-
 #
 
-* The sample App contains both kind of navigation using Tabbar and using Side Menu. You can choose anyone. For more information about the navigation please explore our sample project.
+* The sample App contains both kinds of navigation using the Tabbar and using Side Menu. 
 
 * To unveil the full potential and seamless integration of the Package, please explore the MobileQuickLaunchKitExample project.
