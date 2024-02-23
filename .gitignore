@@ -5,7 +5,12 @@ DerivedData/
 .swiftpm/configuration/registries.json
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
+*.swiftpm/
+*.xcworkspace/
 
 *.xcuserstate
 ### Firebase ###
 GoogleService-Info.plist
+
+# Package Manager build artifacts
+Package.resolved

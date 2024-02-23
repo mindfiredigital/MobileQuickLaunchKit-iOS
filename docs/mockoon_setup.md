@@ -7,7 +7,7 @@
     - Install Mockoon on your system.
 
 3. **Copy Configuration:**
-    - Copy the content from [Here](./docs/mockoon_json.json).
+    - Copy the content from [Here](./mockoon_json.json).
 
 4. **Open Mockoon:**
     - Open the Mockoon application.

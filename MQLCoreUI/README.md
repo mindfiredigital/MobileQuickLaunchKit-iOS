@@ -45,7 +45,7 @@
         @available(iOS 13.0, *)
         class  ThemeManager: ObservableObject {
             init**(){}
-            @Published **var** current: Theme = .theme2
+            @Published **var** current: Theme = appTheme
         }
  * Now create an object for ThemeManager class in your @main App.swift file and and pass the current theme object as an environment object to share across the App. For example:
 
