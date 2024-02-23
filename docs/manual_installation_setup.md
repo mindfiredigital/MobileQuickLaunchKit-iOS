@@ -7,16 +7,12 @@ You can find these two independent packages: MQLCore and MQLCoreUI inside the Mo
 ## 1. Adding The MobileQuickLaunchKit Package to your Project
 
 * Download the code as zip and extract it.
-* Find the package MobileQuickLaunchKit folder inside the extracted folder.
-
-<img src="screenShots/add_package.png" >
-
-* Copy the MobileQuickLaunchKit folder inside your project's root folder.
+* Copy the downloaded project inside your project's root folder.
 * Click on File menu of the Xcode and select "Add Package Dependencies".
 
 <img src="screenShots/add_package_1.png" >
 
-* On add package window, click on "Add Local", navigate to the project folder and select the MobileQuickLaunchKit folder as a package and then click on "Add Package".
+* On add package window, click on "Add Local", navigate to the project folder and select the downloaded project folder as a package and then click on "Add Package".
 
 <img src="screenShots/add_manual_package_2.png" >
 
@@ -33,7 +29,7 @@ You can find these two independent packages: MQLCore and MQLCoreUI inside the Mo
 ## 2. Adding The MQLCore or MQLCoreUI Package to your Project
 
 * Download the code as zip and extract it.
-* Find the package MQLCore or MQLCoreUI in the MobileQuickLaunchKit folder inside the extracted folder.
+* Find the package MQLCore or MQLCoreUI in the downloaded project inside the extracted folder.
 * Copy the MQLCore or MQLCoreUI folder, whichever you want to add, inside your project's root folder.
 * Add the below Package.swift file in the MQLCore or MQLCoreUI folder 
 

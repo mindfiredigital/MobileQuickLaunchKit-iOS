@@ -31,15 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A51D3552B736C4D00249267 /* Packages.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Packages.md; sourceTree = "<group>"; };
-		2A51D3562B736C5E00249267 /* MobileQuickLaunchKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MobileQuickLaunchKit; path = ../../MobileQuickLaunchKit; sourceTree = "<group>"; };
 		2A8AE3222B2320A800C5F362 /* MobileQuickLaunchKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileQuickLaunchKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8AE3252B2320A800C5F362 /* MobileQuickLaunchKitExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileQuickLaunchKitExampleApp.swift; sourceTree = "<group>"; };
 		2A8AE3272B2320A800C5F362 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2A8AE3292B2320AA00C5F362 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A8AE32C2B2320AA00C5F362 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2ABCCAFC2B7637EF000C2D52 /* MQLCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MQLCore; path = ../../MobileQuickLaunchKit/MQLCore; sourceTree = "<group>"; };
-		2ABCCAFF2B767083000C2D52 /* MQLCoreUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MQLCoreUI; path = ../../MobileQuickLaunchKit/MQLCoreUI; sourceTree = "<group>"; };
 		2AC03DD72B58DC1B004F07AA /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		2AC03DDA2B590C9D004F07AA /* Theme+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Extensions.swift"; sourceTree = "<group>"; };
 		2AD977DF2B50076A00D6BA13 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -71,17 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A51D3542B736C3400249267 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				2A51D3562B736C5E00249267 /* MobileQuickLaunchKit */,
-				2ABCCAFC2B7637EF000C2D52 /* MQLCore */,
-				2ABCCAFF2B767083000C2D52 /* MQLCoreUI */,
-				2A51D3552B736C4D00249267 /* Packages.md */,
-			);
-			path = Packages;
-			sourceTree = "<group>";
-		};
 		2A83156C2B5955350054E2EF /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,9 +88,7 @@
 			children = (
 				4A189A042B8734CD006DC1D4 /* GoogleService-Info.plist */,
 				2A8AE3242B2320A800C5F362 /* MobileQuickLaunchKitExample */,
-				2A51D3542B736C3400249267 /* Packages */,
 				2A8AE3232B2320A800C5F362 /* Products */,
-				4A8F45582B26CC010040707C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,13 +184,6 @@
 				2AD977E42B5007B000D6BA13 /* SideMenuView.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		4A8F45582B26CC010040707C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
