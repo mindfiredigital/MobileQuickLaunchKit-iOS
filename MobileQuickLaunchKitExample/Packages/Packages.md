@@ -1,4 +1,0 @@
-# MobileQuickLaunchKit
-# MQLCore
-# MQLCoreUI
-
