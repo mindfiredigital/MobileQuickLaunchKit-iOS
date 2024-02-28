@@ -141,7 +141,7 @@ Here is a guide to intialize your App with MQLContentView and use authentication
             init(){}
             ///  Colors are being initialized from the assets
             
-            @Published **var** current: Theme = Theme(
+            @Published var current: Theme = Theme(
                 colors: MQLColors(
                      primary: Color(YOUR_THEME_COLOR),
                      secondary: Color("YOUR_THEME_COLOR),
