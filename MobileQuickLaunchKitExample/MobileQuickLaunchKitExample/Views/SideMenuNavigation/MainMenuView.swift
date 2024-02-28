@@ -34,7 +34,14 @@ struct MainMenuView: View {
         }
         .navigationBarBackButtonHidden()
         .fullScreenCover(isPresented: $isLoginModalPresented) {
-            MQLSignInView(isModalPresented: $isLoginModalPresented)
+            MQLSignInView(isModalPresented: $isLoginModalPresented,
+            didSignIn: {
+                debugPrint("Hello sign in")
+            },
+            didSignUp: {
+                debugPrint("Hello sign up")
+            }
+            )
         }
     }
 }

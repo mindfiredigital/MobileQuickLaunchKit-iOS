@@ -28,7 +28,7 @@ As it contains three separate packages MobileQuickLaunchKit, MQLCore and MQLCore
 
 You can find these two independent packages: MQLCore and MQLCoreUI inside the MobileQuickLaunchKit package.
 
-* File > Swift Packages > Add Package Dependency
+* File > Add Package Dependency
 * Add `https://github.com/mindfiredigital/MobileQuickLaunchKit-iOS`
 * Select "Up to Next Major" with "0.1.0"
 * Register your App on the Firebase console, download GoogleService-Info.plist file and add it to your project target.
@@ -61,7 +61,23 @@ MQLSignInView is a ready-to-use View integrated with all authentication screens 
             }
         }
     }
+    
+### 2.1 Auth Callbacks
 
+For adding extra action after successful sign-in or sign-up you can use the following callbacks - 
+
+```
+MQLSignInView(isModalPresented: $isLoginModalPresented,
+    didSignIn: {
+        //Add your actions here
+         debugPrint("Hello sign in")
+    },
+    didSignUp: {
+        //Add your actions here
+        debugPrint("Hello sign up")
+    }
+)
+```
   
 
 ## 3. MQLSettingsView
@@ -115,8 +131,46 @@ Here is a guide to intialize your App with MQLContentView and use authentication
                 }
             }
 ```
-  
+  * Here is an example to create ThemeManager class.
 
+        import SwiftUI
+        import MQLCoreUI
+
+        @available(iOS 13.0, *)
+        class  ThemeManager: ObservableObject {
+            init(){}
+            ///  Colors are being initialized from the assets
+            
+            @Published **var** current: Theme = Theme(
+                colors: MQLColors(
+                     primary: Color(YOUR_THEME_COLOR),
+                     secondary: Color("YOUR_THEME_COLOR),
+                     tertiary: Color(YOUR_THEME_COLOR),
+                     buttonTextPrimary: Color(YOUR_THEME_COLOR),
+                     buttonTextSecondary: Color(YOUR_THEME_COLOR),
+                     placeholderText: Color(YOUR_THEME_COLOR),
+                     backGroundPrimary: Color(YOUR_THEME_COLOR),
+                     backGroundSecondary:Color(YOUR_THEME_COLOR),
+                     error: Color(YOUR_THEME_COLOR),
+                     warning: Color(YOUR_THEME_COLOR),
+                     success: Color(YOUR_THEME_COLOR),
+                     defaultColor: Color("Default"),
+                     borderColor: Color("BorderColor")
+                   ),
+              typography: Typography(
+                    h1: Font.custom("Arial-BoldMT", size: 30), //Use for bold headers
+                    h2: Font.custom("Arial-BoldMT", size: 24),
+                    h3: Font.custom("Arial-BoldMT", size: 18),
+                    h4: Font.custom("Arial-BoldMT", size: 15), // Use for button text
+                    h5: Font.custom("Arial-BoldMT", size: 12),
+                    h6: Font.custom("Arial-BoldMT", size: 10),
+                    body1: Font.custom("ArialMT", size: 15), // Use for body text
+                    body2: Font.custom("ArialMT", size: 14),
+                    body3: Font.custom("ArialMT", size: 16)
+                )
+            )
+        }
+  
 * Here is an Example how to add Authentication to your App's MainView.swift:
 ```
         import SwiftUI
@@ -184,9 +238,9 @@ Here is a guide to intialize your App with MQLContentView and use authentication
 ```
   
 
-## 5. Configuring App BaseURL and Settings Link
+## 5. Configuring App BaseURL and Settings Links
 
-Default baseURL is "http://localhost:3001/api/v1/" being used by the package. You can change this to your base URL at the time you initialize your app. For example:
+The default baseURL is "http://localhost:3001/api/v1/"  and the Settings Links is "https://www.google.co.in/" being used by the package. You can change this to your URLs when you initialize your app by calling the setConfigValues function as given below and adding a config JSON file in the app. For example:
 ```
     import SwiftUI
     import MobileQuickLaunchKit
@@ -196,13 +250,8 @@ Default baseURL is "http://localhost:3001/api/v1/" being used by the package. Yo
     struct MobileQuickLaunchKitExampleApp: App {
     
         init() {
-            //Set your base URL
-            MQLConstants.baseURL = "YOUR_BASE_URL"
-    
-            //Set your Setting page webview url's
-            SettingsLinks.privacy = "YOUR_PRIVACY_URL"
-            SettingsLinks.aboutUs = "YOUR_ABOUT_US_URL"
-            SettingsLinks.help = "YOUR_HELP_URL"
+            //Set the json config values to the package value
+            MQLAppState.shared.setConfigValues()
         }
     
         var body: some Scene {
@@ -215,6 +264,17 @@ Default baseURL is "http://localhost:3001/api/v1/" being used by the package. Yo
             }
         }
 ```
+config.json
+
+```
+    {
+        "baseURL": "your_base_url",
+        "privacyURL": "your_privacy_url",
+        "helpURL": "your_help_url",
+        "aboutUsURL": "your_aboutUs_url",
+    }
+```
+Note: The name of the JSON file should be config.json.
   
 
 ## 6. MQLCore

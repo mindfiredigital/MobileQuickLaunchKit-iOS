@@ -19,13 +19,8 @@ struct MobileQuickLaunchKitExampleApp: App {
         //Set the local storage value to the AppState
         MQLAppState.shared.setValues()
         
-        //Set you App Base URL
-        MQLConstants.baseURL = "http://localhost:3001/api/v1/" // Your App's Base URL
-        
-        //Set your Setting page webview url's
-        SettingsLinks.privacy = "https://www.google.co.in"
-        SettingsLinks.aboutUs = "https://www.google.co.in"
-        SettingsLinks.help = "https://www.google.co.in"
+        //Set the json config values to the package value
+        MQLAppState.shared.setConfigValues()
     }
     
     var body: some Scene {
