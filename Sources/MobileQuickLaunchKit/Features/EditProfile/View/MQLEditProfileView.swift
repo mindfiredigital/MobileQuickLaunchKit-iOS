@@ -9,13 +9,15 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
-struct EditProfileView: View {
+public struct MQLEditProfileView: View {
     
     @EnvironmentObject var theme: Theme
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject private var viewModel = EditProfileViewModel()
     
-    var body: some View {
+    public init(){}
+    
+    public var body: some View {
         ZStack {
             theme.colors.backGroundPrimary
                 .ignoresSafeArea()
@@ -114,5 +116,5 @@ struct EditProfileView: View {
 }
 
 #Preview {
-    EditProfileView()
+    MQLEditProfileView()
 }

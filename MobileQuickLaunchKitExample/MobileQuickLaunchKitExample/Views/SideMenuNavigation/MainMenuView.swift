@@ -43,5 +43,8 @@ struct MainMenuView: View {
             }
             )
         }
+        .onChange(of: isLoginModalPresented) {
+                  selectedTab = 0
+              }
     }
 }

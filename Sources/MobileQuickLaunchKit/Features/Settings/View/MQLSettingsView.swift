@@ -39,7 +39,7 @@ public struct MQLSettingsView: View {
                     
                     //Accounts button
                     NavigationLink(
-                        destination: EditProfileView(),
+                        destination: MQLEditProfileView(),
                         isActive: $viewModel.isEditProfileActive
                     ) {
                         SettingsButton(title: "editProfile".localized()) {
@@ -49,7 +49,7 @@ public struct MQLSettingsView: View {
                     
                     //Change Password
                     NavigationLink(
-                        destination: ChangePasswordView(),
+                        destination: MQLChangePasswordView(),
                         isActive: $viewModel.isChangePasswordActive
                     ) {
                         SettingsButton(title: "changePassword".localized()) {

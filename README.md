@@ -97,7 +97,9 @@ MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view
         }
     }
 ```
-  
+  * You can also use the ChangePassword view and EditProfile view separately by calling the below view structs
+      * MQLChangePasswordView()
+      * MQLEditProfileView()
 
 ## 4. Initializing the App with Package ContentView and Authentication
 
