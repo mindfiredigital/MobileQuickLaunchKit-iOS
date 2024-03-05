@@ -80,4 +80,17 @@ public class MQLAppState {
         }
         return false
     }
+    
+    public func setConfigValues() {
+        if let configURL = Bundle.main.url(forResource: "config", withExtension: "json"),
+           let jsonData = try? Data(contentsOf: configURL),
+           let configuration = try? JSONDecoder().decode(ConfigurationResponse.self, from: jsonData) {
+            MQLConstants.baseURL = configuration.baseURL // Your App's Base URL
+            
+            //Set your Setting page webview url's
+            SettingsLinks.privacy = configuration.privacyURL
+            SettingsLinks.aboutUs = configuration.aboutUsURL
+            SettingsLinks.help = configuration.helpURL
+        }
+    }
 }

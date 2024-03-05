@@ -9,13 +9,15 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
-struct ChangePasswordView: View {
+public struct MQLChangePasswordView: View {
     
     @EnvironmentObject var theme: Theme
     @StateObject var viewModel = ChangePasswordViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    var body: some View {
+    public init() {}
+    
+    public var body: some View {
         ZStack {
             theme.colors.backGroundPrimary
                 .ignoresSafeArea()
@@ -66,5 +68,5 @@ struct ChangePasswordView: View {
 }
 
 #Preview {
-    ChangePasswordView()
+    MQLChangePasswordView()
 }

@@ -27,6 +27,7 @@
 		4A189A082B873562006DC1D4 /* MQLCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4A189A072B873562006DC1D4 /* MQLCore */; };
 		4A189A0A2B873562006DC1D4 /* MQLCoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4A189A092B873562006DC1D4 /* MQLCoreUI */; };
 		4A189A0C2B873562006DC1D4 /* MobileQuickLaunchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A189A0B2B873562006DC1D4 /* MobileQuickLaunchKit */; };
+		4A5C06A72B8DF46200A4EE1F /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A5C06A62B8DF46100A4EE1F /* config.json */; };
 		4AAADE022B4E977900AB9A6E /* BottomTabNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAADE012B4E977900AB9A6E /* BottomTabNavigationView.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		2AD977ED2B501AA800D6BA13 /* SideMenuSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuSettingsView.swift; sourceTree = "<group>"; };
 		2AD977EF2B50219600D6BA13 /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
 		4A189A042B8734CD006DC1D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../OpenSource SDK/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A5C06A62B8DF46100A4EE1F /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		4A7D50BA2B340DBA006E04EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AAADE012B4E977900AB9A6E /* BottomTabNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 		2A8AE3242B2320A800C5F362 /* MobileQuickLaunchKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				4A5C06A62B8DF46100A4EE1F /* config.json */,
 				4A7D50BA2B340DBA006E04EF /* Info.plist */,
 				2A83156C2B5955350054E2EF /* App */,
 				2AD977DD2B50075000D6BA13 /* Views */,
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A8AE32D2B2320AA00C5F362 /* Preview Assets.xcassets in Resources */,
+				4A5C06A72B8DF46200A4EE1F /* config.json in Resources */,
 				2A8AE32A2B2320AA00C5F362 /* Assets.xcassets in Resources */,
 				4A189A052B8734CD006DC1D4 /* GoogleService-Info.plist in Resources */,
 			);

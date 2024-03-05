@@ -17,8 +17,13 @@ public struct MQLSignInView: View {
     @Binding var isModalPresented: Bool
     @StateObject private var viewModel = SignInViewModel()
     
-    public init(isModalPresented: Binding<Bool>) {
+    public var didSignIn: (() -> Void)?
+    public var didSignUp: (() -> Void)?
+    
+    public init(isModalPresented: Binding<Bool>, didSignIn: (() -> Void)? = nil, didSignUp: (() -> Void)? = nil) {
         _isModalPresented = isModalPresented
+        self.didSignIn = didSignIn
+        self.didSignUp = didSignUp
     }
     public var body: some View {
         NavigationView {
@@ -93,18 +98,21 @@ public struct MQLSignInView: View {
             .onAppear{
                 viewModel.observeSignInState{
                     self.isModalPresented = false
+                    didSignIn?()
                 }
                 viewModel.observeGoogleSignupEvents{
                     self.isModalPresented = false
+                    didSignIn?()
                 }
                 viewModel.observeAppleSignInEvent{
                     self.isModalPresented = false
+                    didSignIn?()
                 }
             }
             .showAlert(title: "error".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
             .loader(isLoading: $viewModel.isLoading)
             .fullScreenCover(isPresented: $viewModel.isSignUpModalPresented) {
-                MQLSignUpView(isModalPresented: $viewModel.isSignUpModalPresented)
+                MQLSignUpView(isModalPresented: $viewModel.isSignUpModalPresented, didSignUp: didSignUp)
             }
             .fullScreenCover(isPresented: $viewModel.isForgetPasswordModalPresented) {
                 ForgetPasswordView(isModalPresented: $viewModel.isForgetPasswordModalPresented)
