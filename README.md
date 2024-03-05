@@ -207,10 +207,13 @@ Here is a guide to intialize your App with MQLContentView and use authentication
                     .navigationBarBackButtonHidden()
                     .fullScreenCover(isPresented: $isLoginModalPresented) {
                     
-                    /// Defined inside the MobileQuickLaunchKit package
-                    /// Used to Authenticate the user
-                    MQLSignInView(isModalPresented: $isLoginModalPresented)
-                }
+                        /// Defined inside the MobileQuickLaunchKit package
+                        /// Used to Authenticate the user
+                        MQLSignInView(isModalPresented: $isLoginModalPresented)
+                    }
+                    .onChange(of: isLoginModalPresented) {
+                        selectedTab = 0
+                    }
             }
         }
 ```
