@@ -1,0 +1,6 @@
+{
+    "baseURL": "http://localhost:3001/api/v1/",
+    "privacyURL": "https://meet.google.com/",
+    "helpURL": "https://meet.google.com/",
+    "aboutUsURL": "https://meet.google.com/",
+}
