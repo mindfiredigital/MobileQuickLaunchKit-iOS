@@ -5,9 +5,7 @@
 //  Created by Satyam Tripathi on 11/12/23.
 //
 
-import Foundation
 import SwiftUI
-import MobileQuickLaunchKit
 import MQLCoreUI
 
 @available(iOS 13.0, *)

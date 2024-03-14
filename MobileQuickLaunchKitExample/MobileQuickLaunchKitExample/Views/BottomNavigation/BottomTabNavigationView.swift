@@ -38,6 +38,9 @@ struct BottomTabNavigationView: View {
         .fullScreenCover(isPresented: $isLoginModalPresented) {
             MQLSignInView(isModalPresented: $isLoginModalPresented)
         }
+        .onChange(of: isLoginModalPresented) {
+                  selectedTab = 0
+              }
     }
 }
 

@@ -16,6 +16,9 @@ struct MQLSignUpView: View {
     @StateObject private var viewModel = SignUpViewModel()
     @Binding var isModalPresented: Bool
     
+    // New closure property to handle sign-in button tap
+    public var didSignUp: (() -> Void)?
+    
     var body: some View {
         ZStack {
             theme.colors.backGroundPrimary
@@ -77,6 +80,7 @@ struct MQLSignUpView: View {
                 DispatchQueue.main.async {
                     UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
                 }
+                didSignUp?()
             }
         }
         .showAlert(title: "error".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
