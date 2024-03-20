@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MQLCoreUI
+import MQLCore
 
 struct SplashScreenView: View {
     @EnvironmentObject var theme: Theme
@@ -19,7 +20,7 @@ struct SplashScreenView: View {
                 Image(Icon.companyLogo, bundle: .main)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
+                    .frame(width: ScreenSize.scaleHeight(0.13), height: ScreenSize.scaleHeight(0.13))
                     .offset(x: 0, y: -20)
                     .foregroundColor(theme.colors.primary)
                 Spacer()

@@ -25,7 +25,7 @@ struct MQLSignUpView: View {
                 .ignoresSafeArea()
             ScrollView(.vertical) {
                 VStack(alignment: .leading){
-                    Spacer()
+                    HeaderLogo()
                     
                     Text("signUp", bundle: .module)
                         .modifier(theme.typography.h1Style(color: theme.colors.secondary))

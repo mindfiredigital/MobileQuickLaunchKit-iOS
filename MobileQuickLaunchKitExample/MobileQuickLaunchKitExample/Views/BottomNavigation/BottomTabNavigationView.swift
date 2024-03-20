@@ -34,6 +34,7 @@ struct BottomTabNavigationView: View {
                 UITabBar.appearance().barTintColor = UIColor(theme.colors.backGroundPrimary)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden()
         .fullScreenCover(isPresented: $isLoginModalPresented) {
             MQLSignInView(isModalPresented: $isLoginModalPresented)
