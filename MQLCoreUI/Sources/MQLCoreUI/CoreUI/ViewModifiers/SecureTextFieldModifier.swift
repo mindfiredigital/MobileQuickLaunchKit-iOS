@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Satyam Tripathi on 14/12/23.
 //
@@ -8,14 +8,29 @@
 import Foundation
 import SwiftUI
 
+/**
+ A view modifier that customizes a secure text field with an optional icon, placeholder, and error message.
+ */
 public struct SecureTextFieldModifier: ViewModifier {
+    /// An optional icon for the secure text field.
     var icon: Image?
+    /// The placeholder text for the secure text field.
     var placeholderName: String = ""
+    /// A binding to the text entered in the secure text field.
     @Binding var text: String
+    /// A binding to indicate whether the text entered is secure.
     @Binding var error: String?
+    /// The theme object providing color and font properties.
     @Binding var isSecure: Bool
+    /// A binding to the error message associated with the secure text field.
     @EnvironmentObject var theme: Theme
-
+    
+    /**
+     Modifies the appearance of the view.
+     
+     - Parameter content: The content of the view.
+     - Returns: A modified view.
+     */
     public func body(content: Content) -> some View {
         VStack(alignment: .leading) {
             HStack {
@@ -63,11 +78,22 @@ public struct SecureTextFieldModifier: ViewModifier {
                     .font(theme.typography.body1)
             }
         }
-       
+        
     }
 }
 
 extension View {
+    /**
+     Produces a customized secure text field complete with an icon, border, and rounded corners.
+     
+     - Parameters:
+     - icon: An optional image to be displayed as an icon.
+     - text: A binding to the text entered in the secure text field.
+     - isSecure: A binding to indicate whether the entered text is secure.
+     - placeholderName: The placeholder text for the secure text field.
+     - error: A binding to the error message associated with the secure text field.
+     - Returns: A modified view with the secure text field customization.
+     */
     public func SecureTextField(icon: Image?, text: Binding<String>, isSecure: Binding<Bool>,placeholderName: String,error: Binding<String?>) -> some View {
         self.modifier(SecureTextFieldModifier(icon: icon, placeholderName: placeholderName, text: text, error: error, isSecure: isSecure))
     }

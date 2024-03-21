@@ -8,25 +8,58 @@
 import Foundation
 import MQLCore
 
-
+/**
+ View model for setting a new password.
+ 
+ This class manages the state and logic related to setting a new password in the application.
+ 
+ Usage:
+ let viewModel = SetNewPasswordViewModel()
+ viewModel.resetPassword(password: "newPassword", confirmPassword: "newPassword")
+ 
+ - Note: This class relies on `SetPasswordEvents` for event handling and `SetNewPasswordResponse` for response data.
+ 
+ - Important: Before using this class, ensure that the `MQLBaseService` is properly configured to handle API requests.
+ */
 final class SetNewPasswordViewModel: ObservableObject {
     
+    /// Closure property to handle set password events.
     @Published var setPasswordEventHandler:((_ event: SetPasswordEvents<SetNewPasswordResponse>) -> Void)?
     
+    /// State for presenting alerts.
     @Published var isAlertPresented = false
+    
+    /// Alert message to display.
     @Published var alertMessage: String?
+    
+    /// State for indicating loading state.
     @Published var isLoading = false
     
+    /// Text for entering the new password.
     @Published var passwordTextField: String = ""
+    
+    /// Error message for password validation.
     @Published var passwordError: String?
     
+    /// Text for confirming the new password.
     @Published var confirmPasswordTextField: String = ""
+    
+    /// Error message for confirming password validation.
     @Published var confirmPasswordError: String?
     
+    /// State for indicating whether the password is secure.
     @Published var isSecurePassword: Bool = true
+    
+    /// State for indicating whether the confirm password is secure.
     @Published var isSecureConfirmPassword: Bool = true
     
-    /// This method is used to set new password in the app.
+    /**
+     Resets the password with the provided new password and confirmation.
+     
+     - Parameters:
+        - password: The new password.
+        - confirmPassword: The confirmation of the new password.
+     */
     func resetPassword(password: String, confirmPassword: String){
         self.setPasswordEventHandler?(.loading)
         var hasValidationError: Bool = false
@@ -59,7 +92,11 @@ final class SetNewPasswordViewModel: ObservableObject {
         
     }
     
-    ///This func is used to observe reset password api events
+    /**
+     Observes reset password state and handles related events.
+     
+     - Parameter isModalPresented: Closure to be executed upon successful password reset.
+     */
     func observeResetPasswordState(isModalPresented: @escaping () -> Void) {
         self.setPasswordEventHandler = { setPasswordEvent in
             

@@ -9,14 +9,33 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
+/**
+ View for changing the user's password.
+ 
+ This view allows the user to change their password by entering a new password and confirming it.
+ 
+ - Note: This view requires the `ChangePasswordViewModel` to manage the password change logic and state.
+ 
+ Usage:
+ MQLChangePasswordView()
+ 
+ - Requires: `Theme` environment object to apply consistent styling throughout the app.
+ */
 public struct MQLChangePasswordView: View {
     
+    /// Environment object for theme styling.
     @EnvironmentObject var theme: Theme
+    
+    /// View model for managing password change logic and state.
     @StateObject var viewModel = ChangePasswordViewModel()
+    
+    /// Binding to control the presentation mode.
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    /// Initializes a new instance of the change password view.
     public init() {}
     
+    /// Body of the change password view.
     public var body: some View {
         ZStack {
             theme.colors.backGroundPrimary

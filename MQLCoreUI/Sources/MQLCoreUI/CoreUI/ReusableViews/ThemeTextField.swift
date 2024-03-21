@@ -7,15 +7,42 @@
 
 import SwiftUI
 
+/**
+ A custom text field with a themed appearance.
+ */
 public struct ThemeTextField: View {
+    /// The placeholder text for the text field.
     var placeholderText: String
+    
+    /// The optional icon to display alongside the text field.
     var icon: Image?
+    
+    /// The type of keyboard to display when editing the text field.
     var keyBoardType: UIKeyboardType
+    
+    /// The text binding for the text field.
     @Binding var text: String
+    
+    /// The optional error message binding for the text field.
     @Binding var error: String?
-    @EnvironmentObject var theme : Theme
+    
+    /// The environment object providing the theme settings.
+    @EnvironmentObject var theme: Theme
+    
+    /// A boolean value indicating whether the text field is for entering a phone number.
     var isPhoneField: Bool
     
+    /**
+     Initializes the ThemeTextField view.
+     
+     - Parameters:
+     - placeholderText: The placeholder text for the text field.
+     - icon: The optional icon to display alongside the text field.
+     - keyBoardType: The type of keyboard to display when editing the text field.
+     - text: The text binding for the text field.
+     - error: The optional error message binding for the text field.
+     - isPhoneField: A boolean value indicating whether the text field is for entering a phone number.
+     */
     public init(placeholderText: String, icon: Image? = nil, keyBoardType: UIKeyboardType = .default, text: Binding<String>, error: Binding<String?>, isPhoneField: Bool = false) {
         self.placeholderText = placeholderText
         self.icon = icon
@@ -40,6 +67,3 @@ public struct ThemeTextField: View {
     }
 }
 
-//#Preview {
-//    ThemeTextField(placeholderText: "Placeholder", text: "", error: "")
-//}

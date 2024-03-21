@@ -12,31 +12,64 @@ import AuthenticationServices
 import CryptoKit
 import MQLCore
 
+/// View model for handling sign-in functionality.
 final class SignInViewModel: NSObject, ObservableObject {
     
-    @Published var signInEventHandler:((_ event: SignInEvents) -> Void)?
+    // MARK: - Published Properties
     
+    /// Closure property to handle sign-in events.
+    @Published var signInEventHandler: ((_ event: SignInEvents) -> Void)?
+    
+    /// State for presenting sign-up modal.
     @Published var isSignUpModalPresented = false
+    
+    /// State for presenting forgot password modal.
     @Published var isForgetPasswordModalPresented = false
+    
+    /// Text field for user's email or username.
     @Published var emailTextField: String = ""
+    
+    /// Error message for username validation.
     @Published var usernameError: String?
     
+    /// Text field for user's password.
     @Published var passwordTextField: String = ""
+    
+    /// Error message for password validation.
     @Published var passwordError: String?
     
+    /// State for presenting alerts.
     @Published var isAlertPresented = false
+    
+    /// Alert message to display.
     @Published var alertMessage: String?
+    
+    /// State for indicating loading state.
     @Published var isLoading = false
     
+    /// State for password secure entry.
     @Published var isSecure: Bool = true
     
+    /// Closure property for handling Google sign-in events.
     var googleSignInEventHandler: ((_ event: SocialSignInEvents) -> Void)?
+    
+    /// Closure property for handling Apple sign-in events.
     var appleSignInEventHandler: ((_ event: SocialSignInEvents) -> Void)?
     
-    // Unhashed nonce.
+    // MARK: - Private Properties
+    
+    /// Unhashed nonce for Apple sign-in.
     fileprivate var currentNonce: String?
     
-    /// This method is used to login in the app.
+    // MARK: - Sign-In Methods
+    
+    /**
+     Attempts to log in the user with provided credentials.
+     
+     - Parameters:
+     - emailOrUsername: The user's email or username.
+     - password: The user's password.
+     */
     func login(emailOrUsername: String, password: String){
         self.signInEventHandler?(.loading)
         
@@ -74,7 +107,12 @@ final class SignInViewModel: NSObject, ObservableObject {
         }
     }
     
-    ///This func is used to observe sign in api events
+    /**
+     Observes sign-in state and executes a closure when modal is presented.
+     
+     - Parameters:
+     - isModalPresented: Closure to be executed when modal is presented.
+     */
     func observeSignInState(isModalPresented: @escaping () -> Void) {
         self.signInEventHandler = {  signInEvent in
             
@@ -118,7 +156,9 @@ final class SignInViewModel: NSObject, ObservableObject {
         }
     }
     
-    /// This method is used for face/touch id authentication
+    /**
+     Initiates face ID authentication.
+     */
     func faceIdAuthentication(){
         let context = LAContext()
         var error: NSError?
@@ -143,8 +183,10 @@ final class SignInViewModel: NSObject, ObservableObject {
         }
     }
     
-    /// This method is used for sign in with google by using firebase
-    func signInWithGoogle(){
+    /**
+     Initiates sign-in with Google.
+     */
+    func signInWithGoogle() {
         
         self.googleSignInEventHandler?(.loading)
         // Check the internet connectivity
@@ -192,7 +234,12 @@ final class SignInViewModel: NSObject, ObservableObject {
         }
     }
     
-    ///This func is used to observe google  sign in api events
+    /**
+     Observes Google sign-up events and executes a closure when modal is presented.
+     
+     - Parameters:
+     - isModalPresented: Closure to be executed when modal is presented.
+     */
     func observeGoogleSignupEvents(isModalPresented: @escaping () -> Void) {
         self.googleSignInEventHandler = { googleSignInEvent in
             
@@ -224,10 +271,12 @@ final class SignInViewModel: NSObject, ObservableObject {
         }
     }
     
-    
-    
-    
-    /// This method is used to store the apple email and fullname in local storage
+    /**
+     Stores Apple email and full name in local storage.
+     
+     - Parameters:
+     - appleIDCredential: Apple ID credential containing email and full name.
+     */
     func storeAppleEmailAndFullName(appleIDCredential: ASAuthorizationAppleIDCredential) {
         // Save apple id email to keychain
         SecureUserDefaults.setValue(appleIDCredential.email, forKey: LocalStorageKeys.appleIdEmail)
@@ -238,8 +287,12 @@ final class SignInViewModel: NSObject, ObservableObject {
         MQLAppState.shared.appleIdFullName = appleIdFullname
     }
     
-    
-    /// This method is used to request apple sign in api
+    /**
+     Requests sign-in with Apple ID API.
+     
+     - Parameters:
+     - appleIDCredential: Apple ID credential for authentication.
+     */
     func requestSignInWithAppleIdAPI(appleIDCredential: ASAuthorizationAppleIDCredential){
         self.appleSignInEventHandler?(.loading)
         guard currentNonce != nil else {
@@ -285,8 +338,12 @@ final class SignInViewModel: NSObject, ObservableObject {
         }
     }
     
-    
-    /// This method is used to observe Apple sign in events
+    /**
+     Observes Apple sign-in events and executes a closure when modal is presented.
+     
+     - Parameters:
+     - isModalPresented: Closure to be executed when modal is presented.
+     */
     func observeAppleSignInEvent(isModalPresented: @escaping () -> Void){
         self.appleSignInEventHandler = { appleSignInEvents in
             

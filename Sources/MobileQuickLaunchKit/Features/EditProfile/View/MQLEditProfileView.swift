@@ -9,22 +9,47 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
+/**
+ A view for editing user profile details.
+ 
+ This view allows users to edit their profile information, including their name, phone number, and profile image.
+ 
+ Usage:
+ - Initialize an instance of `MQLEditProfileView` to present the profile editing interface.
+ - Users can edit their name, phone number, and profile image.
+ - The view provides options to select a profile image from the photo library or capture a new photo using the camera.
+ - Upon tapping the save button, changes made to the profile details are saved.
+ 
+ Example:
+ let editProfileView = MQLEditProfileView()
+ 
+ - Requires: `Theme` environment object for styling, `EditProfileViewModel` for managing profile
+ 
+ - Note: The `EditProfileViewModel` is responsible for handling user interactions, API requests, and updating the view based on the user's actions.
+ */
 public struct MQLEditProfileView: View {
     
+    /// Environment object for managing theme styling.
     @EnvironmentObject var theme: Theme
+    
+    /// Binding to the presentation mode to control navigation.
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    /// View model for managing profile editing logic and state.
     @StateObject private var viewModel = EditProfileViewModel()
     
+    /// Initializes a new instance of `MQLEditProfileView`.
     public init(){}
     
+    /// The body of the view.
     public var body: some View {
         ZStack {
+            // Background color
             theme.colors.backGroundPrimary
                 .ignoresSafeArea()
             ScrollView(.vertical) {
                 VStack{
                     //Back Button with title
-                    
                     BackButtonWithTitle(title: "profile".localized(), action: {
                         presentationMode.wrappedValue.dismiss()
                     })
@@ -32,6 +57,7 @@ public struct MQLEditProfileView: View {
                     
                     // Profile Image Section
                     ZStack(alignment: .bottomTrailing) {
+                        // Profile image
                         if let image = viewModel.profileImage {
                             Image(uiImage: image)
                                 .resizable()
@@ -100,14 +126,14 @@ public struct MQLEditProfileView: View {
                 .sheet(isPresented: $viewModel.shouldPresentImagePicker) {
                     SUImagePickerView(sourceType: viewModel.shouldPresentCamera ? .camera : .photoLibrary, image: $viewModel.profileImage, isPresented: self.$viewModel.shouldPresentImagePicker, vm: viewModel)
                 }.actionSheet(isPresented: $viewModel.shouldPresentActionScheet) { () -> ActionSheet in
-                            ActionSheet(title: Text("Choose mode"), message: Text("Please choose your preferred mode to set your profile image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
-                                viewModel.shouldPresentImagePicker = true
-                                viewModel.shouldPresentCamera = true
-                            }), ActionSheet.Button.default(Text("Photo Library"), action: {
-                                viewModel.shouldPresentImagePicker = true
-                                viewModel.shouldPresentCamera = false
-                            }), ActionSheet.Button.cancel()])
-                        }
+                    ActionSheet(title: Text("Choose mode"), message: Text("Please choose your preferred mode to set your profile image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
+                        viewModel.shouldPresentImagePicker = true
+                        viewModel.shouldPresentCamera = true
+                    }), ActionSheet.Button.default(Text("Photo Library"), action: {
+                        viewModel.shouldPresentImagePicker = true
+                        viewModel.shouldPresentCamera = false
+                    }), ActionSheet.Button.cancel()])
+                }
                 .showAlert(title: viewModel.alertTitle.localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
                 .loader(isLoading: $viewModel.isLoading)
             }

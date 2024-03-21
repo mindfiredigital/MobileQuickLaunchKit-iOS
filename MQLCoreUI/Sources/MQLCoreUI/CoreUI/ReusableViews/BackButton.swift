@@ -8,10 +8,21 @@
 import Foundation
 import SwiftUI
 
+/**
+ A custom back button view.
+ */
 public struct BackButton: View {
+    /// The action to perform when the button is tapped.
     var action: () -> Void
+    
+    /// The theme environment object.
     @EnvironmentObject var theme: Theme
     
+    /**
+     Initializes the BackButton view.
+     
+     - Parameter action: The action to perform when the button is tapped.
+     */
     public init(action: @escaping () -> Void) {
         self.action = action
     }

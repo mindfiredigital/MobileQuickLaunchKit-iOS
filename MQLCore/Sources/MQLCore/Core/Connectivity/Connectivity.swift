@@ -9,6 +9,7 @@ import Foundation
 import SystemConfiguration
 
 public class Connectivity {
+    /// To verify the device's network connection status.
     public class var isConnectedToInternet: Bool {
         var zeroAddress = sockaddr()
         zeroAddress.sa_len = UInt8(MemoryLayout<sockaddr>.size)
