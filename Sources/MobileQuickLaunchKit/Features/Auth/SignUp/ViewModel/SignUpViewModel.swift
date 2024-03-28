@@ -8,8 +8,9 @@
 import Foundation
 import MQLCore
 
+/// View model for handling sign-up functionality.
 final class SignUpViewModel: ObservableObject {
-    
+    /// An event handler closure to handle sign-up events.
     @Published var signUpEventHandler:((_ event: SignUpEvents) -> Void)?
     @Published var isLoggedIn = false
     @Published var isAlertPresented = false
@@ -31,26 +32,42 @@ final class SignUpViewModel: ObservableObject {
     @Published var isSecurePassword: Bool = true
     @Published var isSecureConfirmPassword: Bool = true
     
-    /// This method is used to sign up in the app.
+    /**
+     Signs up the user with provided credentials.
+     
+     - Parameters:
+     - fullname: The user's fullname.
+     - email: The user's email address.
+     - password: The user's password.
+     - confirmPassword: The confirmation of the user's password.
+     */
     func signUp(fullname: String, email: String, password: String, confirmPassword: String){
         self.signUpEventHandler?(.loading)
         var hasValidationError: Bool = false
+        
+        // Validate fullname
         if fullname.count < 3 {
             self.signUpEventHandler?(.fullnameValidationError(error: "invalidFullname"))
         }
         
+        // Validate email
         if !MQLValidations.isValidEmail(email: email) {
             self.signUpEventHandler?(.emailValidationError(error: "invalidEmail"))
             hasValidationError = true
         }
+        
+        // Validate password
         if !MQLValidations.isStrongPassword(password: password) {
             self.signUpEventHandler?(.passwordValidationError(error: "invalidPassword"))
             hasValidationError = true
         }
+        
+        // Confirm password
         if password != confirmPassword {
             self.signUpEventHandler?(.confirmPasswordValidationError(error: "invalidConfirmPassword"))
             hasValidationError = true
         }
+        
         if hasValidationError {
             return
         }
@@ -62,6 +79,7 @@ final class SignUpViewModel: ObservableObject {
             APIBodyVariables.confirmPassword : confirmPassword
         ]
         
+        // Request sign-up API call
         MQLBaseService.shared.request(endpoint: MQLEndpoint.signUp(data: parameter)) { (result: Result<SignUpResponse, APIError>)  in
             switch result {
                 
@@ -80,7 +98,9 @@ final class SignUpViewModel: ObservableObject {
         
     }
     
-    ///This func is used to observe sign up api events
+    // MARK: - Sign-up State Observation
+    
+    /// This function is used to observe sign-up API events.
     func observeSignUpState(onSuccess: @escaping() -> Void ) {
         self.signUpEventHandler = {  signUpEvent in
             

@@ -9,23 +9,30 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
+/// View for signing up a new user.
 struct MQLSignUpView: View {
     
     @EnvironmentObject var theme: Theme
     
+    // MARK: - Properties
+    
+    /// View model for sign-up functionality.
     @StateObject private var viewModel = SignUpViewModel()
+    
+    /// Binding to control the presentation of the sign-up view.
     @Binding var isModalPresented: Bool
     
-    // New closure property to handle sign-in button tap
+    /// Closure property invoked when the sign-up process is completed successfully.
     public var didSignUp: (() -> Void)?
     
+    // MARK: - Body
     var body: some View {
         ZStack {
             theme.colors.backGroundPrimary
                 .ignoresSafeArea()
             ScrollView(.vertical) {
                 VStack(alignment: .leading){
-                    Spacer()
+                    HeaderLogo()
                     
                     Text("signUp", bundle: .module)
                         .modifier(theme.typography.h1Style(color: theme.colors.secondary))
@@ -74,16 +81,21 @@ struct MQLSignUpView: View {
                 .frame(minHeight: ScreenSize.screenHeight - (ScreenSize.topSafeAreaHeight + ScreenSize.bottomSafeAreaHeight))
             }
         }
-        .navigationBarBackButtonHidden()
+        // Additional View Modifiers
+        .navigationBarBackButtonHidden() // Hide navigation back button
         .onAppear{
+            // Observe sign-up state and handle closure when sign-up is successful
             viewModel.observeSignUpState{
                 DispatchQueue.main.async {
                     UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
                 }
+                // Invoke the closure indicating successful sign-up
                 didSignUp?()
             }
         }
+        // Show alert for any sign-up errors
         .showAlert(title: "error".localized(), isPresented: $viewModel.isAlertPresented, message: viewModel.alertMessage?.localized() ?? "")
+        // Show loader while sign-up process is in progress
         .loader(isLoading: $viewModel.isLoading)
     }
 }

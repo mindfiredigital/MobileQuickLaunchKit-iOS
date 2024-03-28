@@ -8,20 +8,37 @@
 import Foundation
 import MQLCore
 
+/// View model for handling forget password functionality.
 final class ForgetPasswordViewModel: ObservableObject {
-    @Published var forgetPasswordEventHandler:((_ event: ForgetPasswordEvents<ForgetPasswordResponse>) -> Void)?
+    /// Closure property to handle forget password events.
+    @Published var forgetPasswordEventHandler: ((_ event: ForgetPasswordEvents<ForgetPasswordResponse>) -> Void)?
     
+    /// State for presenting OTP verification modal.
     @Published var isOTPVerificationModalPresented = false
     
+    /// State indicating whether the view model is active.
     @Published var isActive: Bool = false
+    
+    /// State for presenting alerts.
     @Published var isAlertPresented = false
+    
+    /// Alert message to display.
     @Published var alertMessage: String?
+    
+    /// State for indicating loading state.
     @Published var isLoading = false
     
+    /// Text field for user's email.
     @Published var emailTextField: String = ""
+    
+    /// Error message for email validation.
     @Published var emailError: String?
     
-    /// This func is used to request forgotPassword api
+    /**
+     Sends request to send OTP for forget password.
+     
+     - Parameter email: The user's email address.
+     */
     func sendOTP(email: String) {
         self.forgetPasswordEventHandler?(.loading)
         
@@ -45,14 +62,14 @@ final class ForgetPasswordViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Private func
-    
-    ///This func is used to observe forgetPassword api events
+    /**
+     Observes forget password state and handles related events.
+     */
     func observeForgetPasswordState() {
-      
-            self.forgetPasswordEventHandler = {  forgetPasswordEvent in
-                DispatchQueue.main.async {
-                    
+        
+        self.forgetPasswordEventHandler = {  forgetPasswordEvent in
+            DispatchQueue.main.async {
+                
                 switch forgetPasswordEvent {
                     
                 case .loading:

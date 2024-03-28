@@ -9,15 +9,31 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
+/**
+ View for OTP verification.
+ 
+ This view presents a UI for entering and verifying an OTP (One-Time Password) for verification purposes.
+ 
+ - Note: This view requires the `OTPVerificationViewModel` to manage the OTP verification logic and state.
+ 
+ */
+
 @available(iOS 14.0, *)
 struct OTPVerificationView: View {
     
+    /// Environment object for theme styling.
     @EnvironmentObject var theme: Theme
-    @Binding var isModalPresented: Bool
-    @Binding var isForgetPasswordModalPresented: Bool
-    @StateObject private var viewModel = OTPVerificationViewModel()
-
     
+    /// Binding to control the presentation of the OTP verification modal.
+    @Binding var isModalPresented: Bool
+    
+    /// Binding to control the presentation of the forget password modal.
+    @Binding var isForgetPasswordModalPresented: Bool
+    
+    /// View model for managing OTP verification logic and state.
+    @StateObject private var viewModel = OTPVerificationViewModel()
+    
+    /// Body of the OTP verification view.
     var body: some View {
         ZStack {
             theme.colors.backGroundPrimary
@@ -96,7 +112,12 @@ struct OTPVerificationView: View {
         }
     }
     
-    /// This func is used to show the otp accepter text view
+    /**
+     Displays a text view for OTP accepter.
+     
+     - Parameter text: The text for the OTP box.
+     - Returns: A text view for displaying the OTP box.
+     */
     private func otpText(text: String) -> some View {
         
         return Text(text)

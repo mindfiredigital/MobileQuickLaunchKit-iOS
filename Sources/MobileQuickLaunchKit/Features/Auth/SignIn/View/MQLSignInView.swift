@@ -9,6 +9,31 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
+/**
+ A SwiftUI view for handling sign-in functionality.
+ 
+ This view provides fields for entering email or username and password,
+ along with options for social sign-in and Face ID authentication.
+ 
+ Use this view to allow users to sign in to your application.
+ 
+ Requires iOS 14.0 or later.
+ 
+ Usage:
+ MQLSignInView(isModalPresented: $isSignInModalPresented) {
+ // Handle sign-in completion
+ } didSignUp: {
+ // Handle sign-up action
+ }
+ 
+ - Parameters:
+ - isModalPresented: Binding to control the presentation of the sign-in modal.
+ - didSignIn: Closure to be executed upon successful sign-in.
+ - didSignUp: Closure to be executed upon tapping the sign-up button.
+ 
+ - Note: This view relies on the `Theme` environment object and the `SignInViewModel` for its functionality.
+ */
+
 @available(iOS 14.0, *)
 public struct MQLSignInView: View {
     
@@ -17,14 +42,26 @@ public struct MQLSignInView: View {
     @Binding var isModalPresented: Bool
     @StateObject private var viewModel = SignInViewModel()
     
+    /// Closure to be executed upon successful sign-in.
     public var didSignIn: (() -> Void)?
+    
+    /// Closure to be executed upon tapping the sign-up button.
     public var didSignUp: (() -> Void)?
     
+    /**
+     Initializes a sign-in view.
+     
+     - Parameters:
+        - isModalPresented: Binding to control the presentation of the sign-in modal.
+        - didSignIn: Closure to be executed upon successful sign-in. Defaults to `nil`.
+        - didSignUp: Closure to be executed upon tapping the sign-up button. Defaults to `nil`.
+     */
     public init(isModalPresented: Binding<Bool>, didSignIn: (() -> Void)? = nil, didSignUp: (() -> Void)? = nil) {
         _isModalPresented = isModalPresented
         self.didSignIn = didSignIn
         self.didSignUp = didSignUp
     }
+    
     public var body: some View {
         NavigationView {
             ZStack {

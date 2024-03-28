@@ -1,15 +1,19 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Satyam Tripathi on 19/12/23.
 //
 
 import Foundation
 
-public struct AnyCodable: Codable {
-    let value: Any
 
+/// AnyCodable is a struct that facilitates encoding and decoding of values of any type conforming to `Codable`.
+public struct AnyCodable: Codable {
+    /// The value of any type to be encoded or decoded.
+    let value: Any
+    
+    /// Private struct `CodingKeys` used for custom key coding.
     private struct CodingKeys: CodingKey {
         var stringValue: String
         var intValue: Int?
@@ -19,12 +23,15 @@ public struct AnyCodable: Codable {
         }
         init?(stringValue: String) { self.stringValue = stringValue }
     }
-
+    
+    /// Initializes an `AnyCodable` struct from the given decoder.
+    /// - Parameter decoder: The decoder to decode data from.
+    /// - Throws: An error if the decoding process fails.
     public init(from decoder: Decoder) throws {
         if let container = try? decoder.container(keyedBy: CodingKeys.self) {
             var result = [String: Any]()
             try container.allKeys.forEach { (key)
- throws in
+                throws in
                 result[key.stringValue] = try container.decode(AnyCodable.self, forKey: key).value
             }
             value = result
@@ -54,11 +61,16 @@ public struct AnyCodable: Codable {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Could not serialise"))
         }
     }
-
+    
+    /// Initializes an `AnyCodable` struct with the given value.
+    /// - Parameter value: The value to be encoded or decoded.
     public init(value: Any) {
         self.value = value
     }
-
+    
+    /// Encodes the `AnyCodable` struct using the provided encoder.
+    /// - Parameter encoder: The encoder to encode data with.
+    /// - Throws: An error if the encoding process fails.
     public func encode(to encoder: Encoder) throws {
         if let array = value as? [Any] {
             var container = encoder.unkeyedContainer()

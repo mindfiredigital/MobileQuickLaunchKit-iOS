@@ -9,6 +9,20 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
+/**
+ A SwiftUI view for setting a new password.
+ 
+ This view allows users to set a new password after successful verification of the OTP.
+
+ Usage:
+ 
+ SetNewPasswordView(isModalPresented: $isSetNewPasswordModalPresented, isOTPVerificationModalPresented: $isOTPVerificationModalPresented, isForgetPasswordModalPresented: $isForgetPasswordModalPresented)
+ 
+ - Note: This view relies on the `Theme` environment object and the `SetNewPasswordViewModel` for its functionality.
+
+ - Important: Before using this view, ensure that the user has completed OTP verification and is authorized to set a new password.
+ */
+ 
 struct SetNewPasswordView: View {
     @EnvironmentObject var theme: Theme
     @StateObject var viewModel = SetNewPasswordViewModel()

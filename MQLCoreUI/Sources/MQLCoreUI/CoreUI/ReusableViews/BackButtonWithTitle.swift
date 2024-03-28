@@ -7,11 +7,26 @@
 
 import SwiftUI
 
+/**
+ A custom back button view with a title.
+ */
 public struct BackButtonWithTitle: View {
+    /// The theme environment object.
     @EnvironmentObject var theme: Theme
+    
+    /// The action to perform when the button is tapped.
     var action: () -> Void
+    
+    /// The title of the button.
     var title: String
     
+    /**
+     Initializes the BackButtonWithTitle view.
+     
+     - Parameters:
+     - title: The title of the button.
+     - action: The action to perform when the button is tapped.
+     */
     public init(title: String, action: @escaping () -> Void) {
         self.title = title
         self.action = action

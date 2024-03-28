@@ -8,9 +8,19 @@
 import Foundation
 import SwiftUI
 
+/**
+ A button modifier that selects its color and font from the theme object.
+ */
 struct ButtonModifier: ViewModifier {
     
     @EnvironmentObject var theme: Theme
+    
+    /**
+     Modifies the appearance of the view.
+     
+     - Parameter content: The content of the view.
+     - Returns: A modified view.
+     */
     func body(content: Content) -> some View {
         content
             .frame(maxWidth: .infinity)
@@ -23,6 +33,11 @@ struct ButtonModifier: ViewModifier {
 
 
 extension View {
+    /**
+     Creates a button that matches the theme seamlessly.
+     
+     - Returns: A modified view.
+     */
     public func themeButtonModifier() -> some View {
         self.modifier(ButtonModifier())
     }

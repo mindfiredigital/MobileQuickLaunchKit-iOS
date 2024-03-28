@@ -32,6 +32,7 @@ struct MainMenuView: View {
                 )
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden()
         .fullScreenCover(isPresented: $isLoginModalPresented) {
             MQLSignInView(isModalPresented: $isLoginModalPresented,

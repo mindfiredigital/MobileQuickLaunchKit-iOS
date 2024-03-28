@@ -9,6 +9,19 @@ import SwiftUI
 import MQLCore
 import MQLCoreUI
 
+/**
+ A SwiftUI view for handling forget password functionality.
+
+ This view allows users to request a password reset by providing their email address and sending an OTP.
+
+ Usage:
+ ForgetPasswordView(isModalPresented: $isForgetPasswordModalPresented)
+ 
+ - Note: This view relies on the `Theme` environment object and the `ForgetPasswordViewModel` for its functionality.
+
+ - Important: Before using this view, ensure that the `MQLBaseService` is properly configured to handle API requests.
+ */
+ 
 @available(iOS 14.0, *)
 struct ForgetPasswordView: View {
     

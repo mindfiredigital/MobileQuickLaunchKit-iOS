@@ -204,6 +204,7 @@ Here is a guide to intialize your App with MQLContentView and use authentication
                             UITabBar.appearance().backgroundColor = UIColor(theme.colors.backGroundPrimary)
                         }
                     }
+                    .navigationViewStyle(StackNavigationViewStyle())
                     .navigationBarBackButtonHidden()
                     .fullScreenCover(isPresented: $isLoginModalPresented) {
                     
