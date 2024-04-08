@@ -28,10 +28,11 @@ struct MainMenuView: View {
                 
                 SideMenu(
                     isShowing: $isSideMenuPresented,
-                    content: AnyView(SideMenuView(selectedTab: $selectedTab, isSideMenuPresented: $isSideMenuPresented))
+                    content: AnyView(SideMenuView(selectedTab: $selectedTab, isSideMenuPresented: $isSideMenuPresented, isLoginModalPresented: $isLoginModalPresented))
                 )
             }
         }
+        .accentColor(theme.colors.secondary)
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden()
         .fullScreenCover(isPresented: $isLoginModalPresented) {

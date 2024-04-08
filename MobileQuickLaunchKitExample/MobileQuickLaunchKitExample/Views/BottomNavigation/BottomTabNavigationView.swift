@@ -34,6 +34,7 @@ struct BottomTabNavigationView: View {
                 UITabBar.appearance().barTintColor = UIColor(theme.colors.backGroundPrimary)
             }
         }
+        .accentColor(theme.colors.secondary)
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden()
         .fullScreenCover(isPresented: $isLoginModalPresented) {

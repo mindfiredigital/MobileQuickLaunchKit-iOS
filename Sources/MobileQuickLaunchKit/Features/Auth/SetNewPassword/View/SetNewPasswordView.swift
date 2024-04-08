@@ -62,7 +62,6 @@ struct SetNewPasswordView: View {
                     SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.confirmPasswordTextField, isSecure: $viewModel.isSecureConfirmPassword, placeholderName: "confirmNewPassword".localized(), error: $viewModel.confirmPasswordError)
                         .padding(.top, 20)
                     
-                    Spacer()
                     //Submit password button
                     Button {
                         viewModel.resetPassword(password: viewModel.passwordTextField, confirmPassword: viewModel.confirmPasswordTextField)
@@ -71,7 +70,7 @@ struct SetNewPasswordView: View {
                         Text("submitPassword", bundle: .module)
                             .themeButtonModifier()
                     }
-                    .padding(.top, 20)
+                    .padding(.top, 70)
                     Spacer()
                 }
                 

@@ -71,7 +71,7 @@ struct MQLSignUpView: View {
                         Button("signIn".localized()){
                             isModalPresented.toggle()
                         }
-                        .font(theme.typography.h4)
+                        .font(theme.typography.body1)
                         .foregroundColor(theme.colors.primary)
                     }
                     .padding(.bottom, 15)

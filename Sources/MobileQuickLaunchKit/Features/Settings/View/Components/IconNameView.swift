@@ -22,9 +22,10 @@ struct IconNameView: View {
                 .foregroundColor(theme.colors.secondary)
             
             Text(title)
-                .font(theme.typography.h2)
+                .font(theme.typography.body1)
                 .foregroundColor(theme.colors.secondary)
         }
+        .padding(8)
     }
 }
 

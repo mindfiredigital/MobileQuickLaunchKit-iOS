@@ -56,7 +56,7 @@ public struct MQLChangePasswordView: View {
                     //Confirm New Password Field
                     SecureTextField(icon: Image(Icon.lock, bundle: .module), text: $viewModel.confirmPasswordTextField, isSecure: $viewModel.isSecureConfirmPassword, placeholderName: "confirmNewPassword".localized(), error: $viewModel.confirmPasswordError)
                         .padding(.top, 20)
-                    Spacer()
+                    
                     //Submit password button
                     Button {
                         viewModel.resetPassword(password: viewModel.passwordTextField, confirmPassword: viewModel.confirmPasswordTextField)
@@ -65,12 +65,9 @@ public struct MQLChangePasswordView: View {
                         Text("submitPassword", bundle: .module)
                             .themeButtonModifier()
                     }
-                    .padding(.top, 40)
+                    .padding(.top, 70)
                     
                     Spacer()
-                    Spacer()
-                    Spacer()
-                    
                 }
                 
                 .padding(.horizontal, 20)

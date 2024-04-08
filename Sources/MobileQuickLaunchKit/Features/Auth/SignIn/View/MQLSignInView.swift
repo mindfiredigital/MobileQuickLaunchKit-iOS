@@ -90,7 +90,7 @@ public struct MQLSignInView: View {
                         .frame(maxWidth: .infinity,alignment: .trailing)
                         .padding(.top, 15)
                         .padding(.trailing,5)
-                        .font(theme.typography.h4)
+                        .font(theme.typography.body1)
                         .foregroundColor(theme.colors.primary)
                         
                         //Sign In button

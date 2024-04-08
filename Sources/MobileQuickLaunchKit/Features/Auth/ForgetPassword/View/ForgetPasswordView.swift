@@ -54,7 +54,6 @@ struct ForgetPasswordView: View {
                 
                 //Email Field
                 ThemeTextField(placeholderText: "email".localized(), icon: Image(Icon.email, bundle: .module), keyBoardType: .emailAddress, text: $viewModel.emailTextField, error: $viewModel.emailError)
-                Spacer()
                 
                 //Send Otp button
                 Button {
@@ -63,7 +62,7 @@ struct ForgetPasswordView: View {
                     Text("sendOTP", bundle: .module)
                         .themeButtonModifier()
                 }
-                .padding(.top, 20)
+                .padding(.top, 70)
                 Spacer()
             }
             .padding(.horizontal, 20)

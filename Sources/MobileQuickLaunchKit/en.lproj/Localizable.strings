@@ -22,7 +22,7 @@
 "confirmPassword" = "Confirm Password";
 "alreadyHaveAccount" = "Already have an account ?";
 "forgetPassword1" = "Forgot Password";
-"forgetPasswordMsg" = "Opps. It happens to the best of us. Input your email address to fix the issue.";
+"forgetPasswordMsg" = "Oops. It happens to the best of us. Input your email address to fix the issue.";
 "sendOTP" = "Send OTP";
 "otpVerification" = "OTP Verification";
 "otpVerificationMsg" = "Copy the verification code in your authy application to verify this account recovery";
@@ -63,5 +63,11 @@
 "profile" = "Profile";
 "passwordChangedMsg" = "Password Changed Successfully";
 "alert" = "Alert";
+"app" = "App";
+"theme" = "Theme";
+"system" = "System";
+"light" = "Light";
+"dark" = "Dark";
+"version" = "Version";
 
 

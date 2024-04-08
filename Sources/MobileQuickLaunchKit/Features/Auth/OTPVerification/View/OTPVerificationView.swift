@@ -83,9 +83,6 @@ struct OTPVerificationView: View {
                         .font(theme.typography.body1)
                 }
                 
-                Spacer()
-                
-                
                 //Verify OTP button
                 Button {
                     viewModel.verifyOTP()
@@ -94,7 +91,7 @@ struct OTPVerificationView: View {
                         .themeButtonModifier()
                 }
                 
-                .padding(.top, 20)
+                .padding(.top, 70)
                 
                 Spacer()
                 
@@ -125,7 +122,7 @@ struct OTPVerificationView: View {
             .frame(width: viewModel.textBoxWidth, height: viewModel.textBoxHeight, alignment: .center)
             .background(VStack{
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(theme.colors.secondary, lineWidth: 2)
+                    .stroke(theme.colors.borderColor, lineWidth: 2)
             })
             .padding(viewModel.paddingOfBox)
     }
