@@ -12,11 +12,11 @@
 
 <table>
   <tr>
-    <td><img alt="Sign-in" src="./screenshots/sign-in.png" /></td>
-    <td><img alt="Sign-up" src="./screenshots/sign-up.png" /></td>
-    <td><img alt="Forgot Password" src="./screenshots/forgot-password.png" /></td>
-    <td><img alt="OTP Verification" src="./screenshots/otp-verification.png" /></td>
-    <td><img alt="Set New Password" src="./screenshots/set-new-password.png" /></td>
+    <td><img alt="Sign-in" src="./screenShots/sign-in.png" /></td>
+    <td><img alt="Sign-up" src="./screenShots/sign-up.png" /></td>
+    <td><img alt="Forgot Password" src="./screenShots/forgot-password.png" /></td>
+    <td><img alt="OTP Verification" src="./screenShots/otp-verification.png" /></td>
+    <td><img alt="Set New Password" src="./screenShots/set-new-password.png" /></td>
   </tr>
 </table>
 
@@ -33,11 +33,11 @@
 
 <table>
   <tr>
-    <td><img alt="Drawer Menu" src="./screenshots/drawer-menu.png" /></td>
-    <td><img alt="Settings" src="./screenshots/settings.png" /></td>
-    <td><img alt="Edit Profile" src="./screenshots/edit-profile.png" /></td>
-    <td><img alt="Edit Profile Image" src="./screenshots/edit-profile-image.png" /></td>
-    <td><img alt="Change Password" src="./screenshots/change-password.png" /></td>
-    <td><img alt="Privacy" src="./screenshots/privacy-policy.png" /></td>
+    <td><img alt="Drawer Menu" src="./screenShots/drawer-menu.png" /></td>
+    <td><img alt="Settings" src="./screenShots/settings.png" /></td>
+    <td><img alt="Edit Profile" src="./screenShots/edit-profile.png" /></td>
+    <td><img alt="Edit Profile Image" src="./screenShots/edit-profile-image.png" /></td>
+    <td><img alt="Change Password" src="./screenShots/change-password.png" /></td>
+    <td><img alt="Privacy" src="./screenShots/privacy-policy.png" /></td>
   </tr>
 </table>

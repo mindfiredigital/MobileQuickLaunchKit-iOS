@@ -1,6 +1,6 @@
 # MobileQuickLaunchKit Documentation
 
-<img alt="feature-image" src="./docs/screenshots/MobileQuickLaunchKit-iOS.jpg" />
+<img alt="feature-image" src=".docs/screenShots/MobileQuickLaunchKit-iOS.jpg" />
 
 ## Overview
 
