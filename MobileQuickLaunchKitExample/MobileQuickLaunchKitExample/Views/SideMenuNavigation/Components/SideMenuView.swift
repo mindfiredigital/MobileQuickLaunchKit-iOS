@@ -74,7 +74,7 @@ struct SideMenuView: View {
                     
                     HStack {
                         Spacer()
-                        Text("App Version: V\(getAppVersion())(\(getBuildNumber()))")
+                        Text("Version: v\(getAppVersion())(\(getBuildNumber()))")
                             .font(theme.typography.body1)
                             .multilineTextAlignment(.center)
                             .padding(20)

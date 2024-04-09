@@ -61,7 +61,7 @@ public struct MQLSettingsView: View {
                         // MARK: - App Version
                         HStack {
                             Spacer()
-                            Text("version".localized() + ": V\(getAppVersion())(\(getBuildNumber()))")
+                            Text("version".localized() + ": v\(getAppVersion())(\(getBuildNumber()))")
                                 .font(theme.typography.body1)
                                 .multilineTextAlignment(.center)
                                 .padding(10)
