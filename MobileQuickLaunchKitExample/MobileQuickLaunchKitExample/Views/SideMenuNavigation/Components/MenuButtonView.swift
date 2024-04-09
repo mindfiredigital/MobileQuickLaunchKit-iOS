@@ -21,7 +21,7 @@ struct MenuButtonView: View {
                 isSideMenuPresented.toggle()
             } label: {
                 Image(systemName: "list.bullet")
-                    .foregroundColor(theme.colors.tertiary)
+                    .foregroundColor(theme.colors.secondary)
                     .frame(width: 35, height: 35)
                     .padding(.leading, 10)
             }

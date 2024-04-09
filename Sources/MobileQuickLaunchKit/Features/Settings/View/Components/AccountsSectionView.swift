@@ -39,7 +39,7 @@ struct AccountsSectionView: View {
                     if let image = profileViewModel.profileImage {
                         Image(uiImage: image)
                             .resizable()
-                            .scaledToFit()
+                            .scaledToFill()
                             .frame(width: 40, height: 40)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.white, lineWidth: 2))
@@ -78,8 +78,8 @@ struct AccountsSectionView: View {
                 .onTapGesture {
                     viewModel.isEditProfileActive = true
                 }
-                .padding(.top, 15)
-                .padding(.horizontal, 15)
+                .padding(.vertical, 15)
+                .padding(.horizontal, 8)
             }
             
             Divider()

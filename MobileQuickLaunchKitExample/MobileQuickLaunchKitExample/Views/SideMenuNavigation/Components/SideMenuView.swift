@@ -105,7 +105,8 @@ struct SideMenuView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 60, height: 60)
                 .overlay(
-                    Circle()                            .stroke(theme.colors.borderColor.opacity(0.8), lineWidth: 2)
+                    Circle()                            
+                        .stroke(theme.colors.borderColor.opacity(0.8), lineWidth: 2)
                 )
                 .foregroundStyle(theme.colors.borderColor)
                 .mask(Circle())
@@ -136,20 +137,21 @@ struct SideMenuView: View {
                         Image(systemName: imageName)
                             .resizable()
                             .renderingMode(.template)
-                            .foregroundColor(isSelected ? theme.colors.primary : theme.colors.secondary)
+                            .foregroundColor(isSelected ? theme.colors.buttonTextPrimary : theme.colors.secondary.opacity(0.7))
                             .frame(width: 20, height: 20)
                     }
                     .frame(width: 30, height: 30)
                     Text(title)
                         .font(theme.typography.h4)
-                        .foregroundColor(isSelected ? theme.colors.primary : theme.colors.secondary)
+                        .foregroundColor(isSelected ? theme.colors.buttonTextPrimary : theme.colors.secondary)
                     Spacer()
                 }
             }
             .padding(10)
         }
+        .frame(height: 50)
         .background(
-            isSelected ? theme.colors.backGroundSecondary : .clear
+            isSelected ? theme.colors.primary.opacity(0.8) : .clear
         )
         .cornerRadius(8)
         .padding(.vertical, 5)

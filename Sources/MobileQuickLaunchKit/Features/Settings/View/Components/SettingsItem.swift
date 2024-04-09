@@ -22,7 +22,7 @@ struct SettingsItem: View {
                 .frame(width: 20, height: 20)
                 .padding(.trailing, 10)
                 .padding(.leading, 2)
-                .foregroundColor(theme.colors.secondary)
+                .foregroundColor(theme.colors.secondary.opacity(0.7))
             
             Text(title)
                 .font(theme.typography.body1)

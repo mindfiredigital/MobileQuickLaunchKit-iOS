@@ -19,6 +19,8 @@ public class Theme: ObservableObject{
     /// The Typography object includes all the necessary font properties that may be required in an app.
     public let typography: Typography
     
+    /// selected color scheme
+    @AppStorage("colorScheme") public var selectedColorScheme: String = "system"
     /**
      Initializes the Theme with colors and typography.
      
@@ -29,5 +31,23 @@ public class Theme: ObservableObject{
     public init(colors: MQLColors, typography: Typography) {
         self.colors = colors
         self.typography = typography
+    }
+    
+    /**
+       Retrieves the preferred color scheme based on the selected color scheme.
+
+       - Returns: A `ColorScheme` enum value representing the preferred color scheme, or `nil` if no valid color scheme is selected.
+
+       - Note: The color schemes include `.light` and `.dark`.
+    */
+    public func getPreferredColorScheme() -> ColorScheme? {
+        switch selectedColorScheme {
+        case "light":
+            return .light
+        case "dark":
+            return .dark
+        default:
+            return nil
+        }
     }
 }

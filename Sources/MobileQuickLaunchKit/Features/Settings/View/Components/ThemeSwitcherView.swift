@@ -16,9 +16,6 @@ struct ThemeSwitcherView: View {
     /// selected color scheme
     @State var selectedColorScheme: String = "system"
         
-        //
-        @Environment(\.colorScheme) var deviceColorScheme: ColorScheme
-    
     /// The body of the view.
     var body: some View {
         SettingsTitleView(title: "app".localized())
@@ -46,9 +43,6 @@ struct ThemeSwitcherView: View {
                     Text("light".localized()).tag("light")
                 }
                 .pickerStyle(.segmented)
-                .onChange(of: selectedColorScheme) { newScheme in
-                    print("new scheme: \(newScheme)")
-                }
             }
             .padding(8)
         }
