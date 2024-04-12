@@ -21,7 +21,7 @@ struct BottomSignUpView: View {
             Button("signUp".localized()) {
                 isSignUpModalPresented.toggle()
             }
-            .font(theme.typography.h4)
+            .font(theme.typography.body1)
             .foregroundColor(theme.colors.primary)
         }
         .padding(.bottom, 15)

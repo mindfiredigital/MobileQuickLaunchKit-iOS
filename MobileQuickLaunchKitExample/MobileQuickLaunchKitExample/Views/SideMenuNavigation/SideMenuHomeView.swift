@@ -19,7 +19,7 @@ struct SideMenuHomeView: View {
                 .ignoresSafeArea()
             
             VStack {
-                MenuButtonView(isSideMenuPresented: $isSideMenuPresented)
+                MenuButtonView(isSideMenuPresented: $isSideMenuPresented, title: "Home")
                 
                 HomeView()
             }

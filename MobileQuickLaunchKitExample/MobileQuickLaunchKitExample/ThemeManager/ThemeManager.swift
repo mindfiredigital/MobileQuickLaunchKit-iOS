@@ -15,7 +15,7 @@ class ThemeManager: ObservableObject {
     /// Choose any pre-defined Theme object or create a new Theme object as per your need in Theme+Extensions.swift file
     /// Pre-defined themes are as follows: appTheme, theme1, theme2, theme3
     /// Colors are being initialized from the assets
-    @Published var current: Theme = .appTheme
+    @Published var current: Theme = .theme2
     
 }
 

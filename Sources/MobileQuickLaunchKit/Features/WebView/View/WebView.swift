@@ -19,10 +19,10 @@ struct WebView: View {
     @EnvironmentObject var theme: Theme
     
     /// Binding to the URL of the web content to be displayed.
-    @Binding var url: String
+    var url: String
     
     /// Binding to the title of the web view.
-    @Binding var title: String
+    var title: String
     
     /// The view model for managing the web view's state and actions.
     @StateObject private var viewModel = WebViewViewModel()

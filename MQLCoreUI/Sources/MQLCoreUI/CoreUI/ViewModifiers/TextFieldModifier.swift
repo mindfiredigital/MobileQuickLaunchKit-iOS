@@ -40,7 +40,7 @@ struct TextFieldModifier: ViewModifier {
                     .foregroundColor(theme.colors.secondary)
             }
             .padding(10)
-            .overlay(RoundedRectangle(cornerRadius: 15).stroke(lineWidth: 2).foregroundColor(theme.colors.borderColor))
+            .overlay(RoundedRectangle(cornerRadius: 8).stroke(lineWidth: 1).foregroundColor(theme.colors.borderColor))
             .autocapitalization(.none)
         }
         

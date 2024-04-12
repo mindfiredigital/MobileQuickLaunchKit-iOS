@@ -8,10 +8,12 @@
 import SwiftUI
 import MobileQuickLaunchKit
 import MQLCoreUI
+import MQLCore
 
 enum MenuRowType: Int, CaseIterable{
     case home = 0
     case settings
+    case logout
     
     var title: String{
         switch self {
@@ -19,6 +21,8 @@ enum MenuRowType: Int, CaseIterable{
             return "Home"
         case .settings:
             return "Settings"
+        case .logout:
+            return "Logout"
         }
     }
     
@@ -28,6 +32,8 @@ enum MenuRowType: Int, CaseIterable{
             return "house.fill"
         case .settings:
             return "gearshape.fill"
+        case .logout:
+            return "rectangle.portrait.and.arrow.forward"
         }
     }
 }
@@ -36,6 +42,7 @@ struct SideMenuView: View {
     @EnvironmentObject var theme : Theme
     @Binding var selectedTab: Int
     @Binding var isSideMenuPresented: Bool
+    @Binding public var isLoginModalPresented: Bool
     
     var body: some View {
         HStack {
@@ -48,17 +55,33 @@ struct SideMenuView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     headerView()
-                        .frame(height: 140)
-                        .padding(.bottom, 30)
+                        .padding(.bottom, 10)
                     
                     ForEach(MenuRowType.allCases, id: \.self){ row in
                         menuItemView(isSelected: selectedTab == row.rawValue, imageName: row.iconName, title: row.title) {
                             selectedTab = row.rawValue
                             isSideMenuPresented.toggle()
+                            
+                            if row == .logout {
+                                SecureUserDefaults.removeValue(forKey: LocalStorageKeys.token)
+                                MQLAppState.shared.token = nil
+                                isLoginModalPresented = true
+                            }
                         }
                     }
                     
                     Spacer()
+                    
+                    HStack {
+                        Spacer()
+                        Text("Version: v\(getAppVersion())(\(getBuildNumber()))")
+                            .font(theme.typography.body1)
+                            .multilineTextAlignment(.center)
+                            .padding(20)
+                        Spacer()
+                    }
+                    .padding(.bottom, 20)
+                    
                 }
                 .padding(.top, 100)
                 .frame(width: 270)
@@ -74,29 +97,33 @@ struct SideMenuView: View {
     }
     
     func headerView() -> some View{
-        VStack(alignment: .center){
-            HStack{
-                Spacer()
-                Image("profile-image")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 50)
-                            .stroke(theme.colors.primary.opacity(0.5), lineWidth: 10)
-                    )
-                    .cornerRadius(50)
-                Spacer()
+        
+        HStack{
+            Image(systemName: "person.circle.fill")
+                .resizable()
+                .renderingMode(.template)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 60, height: 60)
+                .overlay(
+                    Circle()                            
+                        .stroke(theme.colors.borderColor.opacity(0.8), lineWidth: 2)
+                )
+                .foregroundStyle(theme.colors.borderColor)
+                .mask(Circle())
+            
+            VStack(alignment: .leading){
+                Text("Demo User")
+                    .font(theme.typography.h3)
+                    .foregroundColor(theme.colors.secondary)
+                
+                Text(verbatim: "demouser@mail.com")
+                    .font(theme.typography.body3)
+                    .foregroundColor(theme.colors.secondary.opacity(0.8))
             }
-            
-            Text("Demo User")
-                .font(theme.typography.h3)
-                .foregroundColor(theme.colors.secondary)
-            
-            Text("demouser@mail.com")
-                .font(theme.typography.body3)
-                .foregroundColor(theme.colors.secondary.opacity(0.8))
         }
+        .padding(.vertical, 5)
+        .padding(.horizontal, 10)
+        
     }
     
     func menuItemView(isSelected: Bool, imageName: String, title: String, hideDivider: Bool = false, action: @escaping (()->())) -> some View{
@@ -105,16 +132,13 @@ struct SideMenuView: View {
         } label: {
             VStack(alignment: .leading){
                 HStack(spacing: 20){
-                    Rectangle()
-                        .fill(isSelected ? theme.colors.primary : .clear)
-                        .frame(width: 5)
                     
                     ZStack{
                         Image(systemName: imageName)
                             .resizable()
                             .renderingMode(.template)
-                            .foregroundColor(isSelected ? theme.colors.buttonTextPrimary : theme.colors.secondary)
-                            .frame(width: 26, height: 26)
+                            .foregroundColor(isSelected ? theme.colors.buttonTextPrimary : theme.colors.secondary.opacity(0.7))
+                            .frame(width: 20, height: 20)
                     }
                     .frame(width: 30, height: 30)
                     Text(title)
@@ -123,10 +147,28 @@ struct SideMenuView: View {
                     Spacer()
                 }
             }
+            .padding(10)
         }
         .frame(height: 50)
         .background(
-            LinearGradient(colors: [isSelected ? theme.colors.primary.opacity(0.8) : .clear, .clear], startPoint: .leading, endPoint: .trailing)
+            isSelected ? theme.colors.primary.opacity(0.8) : .clear
         )
+        .cornerRadius(8)
+        .padding(.vertical, 5)
+        .padding(.horizontal, 10)
+    }
+    
+    func getAppVersion() -> String {
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return appVersion
+        }
+        return "Unknown"
+    }
+    
+    func getBuildNumber() -> String {
+        if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            return buildNumber
+        }
+        return "Unknown"
     }
 }

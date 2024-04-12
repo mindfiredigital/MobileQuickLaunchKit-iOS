@@ -35,11 +35,25 @@ public struct BackButtonWithTitle: View {
     public var body: some View {
         HStack {
             BackButton(action: action)
-            Spacer()
-            Text(title)
-                .modifier(theme.typography.h2Style(color: theme.colors.primary))
+                .frame(width: 35, alignment: .leading)
             
-            Spacer()
+            // Center
+            HStack(alignment: .center) {
+                Spacer()
+                Text(title)
+                    .modifier(theme.typography.h2Style(color: theme.colors.secondary))
+                    .multilineTextAlignment(.center)
+                Spacer()
+            }
+            
+            Button{
+                
+            } label: {
+                Image(systemName: "list.bullet")
+                    .foregroundColor(Color.clear)
+                    .frame(width: 35, height: 35)
+                    .padding(.leading, 10)
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ struct SettingsButton: View {
             action() // Execute the provided action
         }) {
             Text(title) // Use the provided title
-                .foregroundColor(theme.colors.buttonTextSecondary)
+                .foregroundColor(theme.colors.secondary)
                 .font(theme.typography.body1)
         }
         .padding(.top, 10)

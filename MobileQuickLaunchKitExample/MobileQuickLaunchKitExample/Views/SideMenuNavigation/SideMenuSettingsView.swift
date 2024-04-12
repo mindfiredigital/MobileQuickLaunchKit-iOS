@@ -21,7 +21,7 @@ struct SideMenuSettingsView: View {
                 .ignoresSafeArea()
             
             VStack {
-                MenuButtonView(isSideMenuPresented: $isSideMenuPresented)
+                MenuButtonView(isSideMenuPresented: $isSideMenuPresented, title: "Settings")
                 
                 MQLSettingsView(isLoginModalPresented: $isLoginModalPresented )
             }

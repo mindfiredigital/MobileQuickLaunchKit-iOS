@@ -45,12 +45,12 @@ struct APIBodyVariables {
 
 //MARK: - LocalStorageKeys
 
-struct LocalStorageKeys {
-    static let emailOrUsername = "emailOrUsername"
-    static let password = "password"
-    static let token = "token"
-    static let appleIdEmail = "appleIdEmail"
-    static let appleIdFullname = "appleIdFullname"
+public struct LocalStorageKeys {
+    public static let emailOrUsername = "emailOrUsername"
+    public static let password = "password"
+    public static let token = "token"
+    public static let appleIdEmail = "appleIdEmail"
+    public static let appleIdFullname = "appleIdFullname"
 }
 
 //MARK: - DebugPrints

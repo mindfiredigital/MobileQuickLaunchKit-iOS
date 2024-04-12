@@ -1,5 +1,7 @@
 # MobileQuickLaunchKit Documentation
 
+<img alt="feature-image" src="./docs/screenShots/MobileQuickLaunchKit-iOS.jpg" />
+
 ## Overview
 
 Introducing MobileQuickLaunchKit, a powerful SwiftUI package designed to elevate your app development experience by seamlessly integrating essential features. It has dependencies with on separate packages: MQLCore and MQLCoreUI. With a focus on enhancing user engagement and customization, MobileQuickLaunchKit offers a robust set of functionalities, including a set of modules.
@@ -13,6 +15,18 @@ Introducing MobileQuickLaunchKit, a powerful SwiftUI package designed to elevate
 5. [Mockoon Setup Instructions](./docs/mockoon_setup.md)
 6. [API Setup](./docs/apis_setup.md)
 7. [Manual Installation](./docs/manual_installation_setup.md)
+
+### Example Screens
+
+Utilize our pre-built screens to jumpstart your app development:
+
+1. **Authentication**: Simplify user sign-in, sign-up, and password recovery processes.
+
+2. **Settings**: Customize user preferences effortlessly for a personalized experience and account management.
+
+3. **Navigation**: Seamlessly organize app content with tab and drawer views.
+
+**[Explore all available screens](./docs/ScreenShots.md)**
 
 # Prerequisites
 
@@ -42,66 +56,7 @@ You can find these two independent packages: MQLCore and MQLCoreUI inside the Mo
 
 If you want to add your company logo into the views those are defined inside the package like: Splash Screen and Sign In screen. Add a company logo in your project's assest folder by naming it *_"CompanyLogo"_*. As the name is case sensitive so please add your company logo image into your asset folder with same name. It will automatically pick the image from your main project.
 
-## 2. MQLSignInView
-
-MQLSignInView is a ready-to-use View integrated with all authentication screens like: Login, Sign up, Forget Password etc. You can simply add this view into your App and use the following features: SignIn, Sign up, Forget Password. You can present this view on the top of any View you created. Usage example:
-  
-  
-    import SwiftUI
-    import MobileQuickLaunchKit
-
-    struct  YourView: View {
-        @State  var  isLoginModalPresented = !MQLAppState.shared.isUserLoggedIn()
-        var body: some View {
-            NavigationView {
-                HomeView()
-            }
-            .fullScreenCover(isPresented: $isLoginModalPresented) {
-                MQLSignInView(isModalPresented: $isLoginModalPresented)
-            }
-        }
-    }
-    
-### 2.1 Auth Callbacks
-
-For adding extra action after successful sign-in or sign-up you can use the following callbacks - 
-
-```
-MQLSignInView(isModalPresented: $isLoginModalPresented,
-    didSignIn: {
-        //Add your actions here
-         debugPrint("Hello sign in")
-    },
-    didSignUp: {
-        //Add your actions here
-        debugPrint("Hello sign up")
-    }
-)
-```
-  
-
-## 3. MQLSettingsView
-
-MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view contains following features: Edit Profile, Change Password, Privacy, Logout, Help, About Us. Usage example:
-```
-    import SwiftUI
-    import MobileQuickLaunchKit
-
-    struct  YourView: View {
-        @State  var  isLoginModalPresented = !MQLAppState.shared.isUserLoggedIn()
-        
-        var body: some View {
-            NavigationView {
-                MQLSettingsView(isLoginModalPresented: $isLoginModalPresented)
-            }
-        }
-    }
-```
-  * You can also use the ChangePassword view and EditProfile view separately by calling the below view structs
-      * MQLChangePasswordView()
-      * MQLEditProfileView()
-
-## 4. Initializing the App with Package ContentView and Authentication
+## 2. Initializing the App with Package ContentView and Authentication
 
 Here is a guide to intialize your App with MQLContentView and use authentication in your App.
 
@@ -242,7 +197,66 @@ Here is a guide to intialize your App with MQLContentView and use authentication
          }
         }
 ```
+
+## 3. MQLSignInView
+
+MQLSignInView is a ready-to-use View integrated with all authentication screens like: Login, Sign up, Forget Password etc. You can simply add this view into your App and use the following features: SignIn, Sign up, Forget Password. You can present this view on the top of any View you created. Usage example:
   
+  
+    import SwiftUI
+    import MobileQuickLaunchKit
+
+    struct  YourView: View {
+        @State  var  isLoginModalPresented = !MQLAppState.shared.isUserLoggedIn()
+        var body: some View {
+            NavigationView {
+                HomeView()
+            }
+            .fullScreenCover(isPresented: $isLoginModalPresented) {
+                MQLSignInView(isModalPresented: $isLoginModalPresented)
+            }
+        }
+    }
+    
+### 3.1 Auth Callbacks
+
+For adding extra action after successful sign-in or sign-up you can use the following callbacks - 
+
+```
+MQLSignInView(isModalPresented: $isLoginModalPresented,
+    didSignIn: {
+        //Add your actions here
+         debugPrint("Hello sign in")
+    },
+    didSignUp: {
+        //Add your actions here
+        debugPrint("Hello sign up")
+    }
+)
+```
+  
+
+## 4. MQLSettingsView
+
+MQLSettingsView is a ready-to-use View inbuilt authentication feature. This view contains following features: Edit Profile, Change Password, Privacy, Logout, Help, About Us. Usage example:
+```
+    import SwiftUI
+    import MobileQuickLaunchKit
+
+    struct  YourView: View {
+        @State  var  isLoginModalPresented = !MQLAppState.shared.isUserLoggedIn()
+        
+        var body: some View {
+            NavigationView {
+                MQLSettingsView(isLoginModalPresented: $isLoginModalPresented)
+            }
+        }
+    }
+```
+  * You can also use the ChangePassword view and EditProfile view separately by calling the below view structs
+      * MQLChangePasswordView()
+      * MQLEditProfileView()
+
 
 ## 5. Configuring App BaseURL and Settings Links
 

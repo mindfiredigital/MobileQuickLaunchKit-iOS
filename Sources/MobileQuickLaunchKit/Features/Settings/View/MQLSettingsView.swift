@@ -20,118 +20,85 @@ import MQLCoreUI
  */
 public struct MQLSettingsView: View {
     /// The theme environment object for styling.
-       @EnvironmentObject var theme : Theme
-       
-       /// The view model for managing settings logic and state.
-       @StateObject private var viewModel = SettingsViewModel()
-       
-       /// Binding to control the presentation of the login modal.
-       @Binding var isLoginModalPresented: Bool
-       
-       /// Initializes a new instance of `MQLSettingsView`.
-       ///
-       /// - Parameter isLoginModalPresented: Binding to control the presentation of the login modal.
+    @EnvironmentObject var theme : Theme
+    
+    
+    /// The view model for managing settings logic and state.
+    @StateObject private var viewModel = SettingsViewModel()
+    
+    /// Binding to control the presentation of the login modal.
+    @Binding var isLoginModalPresented: Bool
+    
+    /// Initializes a new instance of `MQLSettingsView`.
+    ///
+    /// - Parameter isLoginModalPresented: Binding to control the presentation of the login modal.
     public init(isLoginModalPresented: Binding<Bool>) {
         _isLoginModalPresented = isLoginModalPresented
     }
     
+    /// View model for managing profile editing logic and state.
+    @StateObject private var profileViewModel = EditProfileViewModel()
+    
+    
     /// The body of the settings view.
     public var body: some View {
         ZStack {
-            theme.colors.backGroundPrimary
+            theme.colors.backGroundSecondary
                 .ignoresSafeArea()
             
             ScrollView(.vertical) {
-                VStack(alignment: .leading){
                     
-                    // Heading Text
-                    Text("settings", bundle: .module)
-                        .modifier(theme.typography.h1Style(color: theme.colors.secondary))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.top, 30)
-                        .padding(.bottom, 25)
-                    
-                    // Account Section
-                    IconNameView(title: "account".localized(), icon: Icon.account)
-                    
-                    // Edit Profile
-                    NavigationLink(
-                        destination: MQLEditProfileView(),
-                        isActive: $viewModel.isEditProfileActive
-                    ) {
-                        SettingsButton(title: "editProfile".localized()) {
-                            viewModel.isEditProfileActive = true
+                    VStack(alignment: .leading) {
+                        // MARK: - Account
+                        AccountsSectionView(viewModel: viewModel, profileViewModel: profileViewModel, isLoginModalPresented: $isLoginModalPresented)
+                        
+                        // MARK: - App
+                        ThemeSwitcherView()
+                        
+                        // MARK: - Other
+                        OthersSectionView()
+                        
+                        // MARK: - App Version
+                        HStack {
+                            Spacer()
+                            Text("version".localized() + ": v\(getAppVersion())(\(getBuildNumber()))")
+                                .font(theme.typography.body1)
+                                .multilineTextAlignment(.center)
+                                .padding(10)
+                            Spacer()
                         }
+                        .padding(.top, 20)
+                        .padding(.bottom, 20)
                     }
-                    
-                    // Change Password
-                    NavigationLink(
-                        destination: MQLChangePasswordView(),
-                        isActive: $viewModel.isChangePasswordActive
-                    ) {
-                        SettingsButton(title: "changePassword".localized()) {
-                            viewModel.isChangePasswordActive = true
-                        }
-                    }
-
-                    // Privacy
-                    NavigationLink(
-                        destination: WebView(url: $viewModel.webViewURL, title: $viewModel.webViewTitle),
-                        isActive: $viewModel.isWebViewActive
-                    ) {
-                        SettingsButton(title: "privacy".localized()) {
-                            viewModel.webViewURL = SettingsLinks.privacy
-                            viewModel.isWebViewActive = true
-                            viewModel.webViewTitle = "privacy"
-                        }
-                    }
-                   
-                    // Logout Button
-                    SettingsButton(title: "logout".localized()) {
-                        debugPrint("logout")
-                        SecureUserDefaults.removeValue(forKey: LocalStorageKeys.token)
-                        MQLAppState.shared.token = nil
-                        isLoginModalPresented = true
-                    }
-                    
-                    // Other Section
-                    IconNameView(title: "other".localized(), icon: Icon.other)
-                        .padding(.top, 30)
-                    
-                    // Help
-                    NavigationLink(
-                        destination: WebView(url: $viewModel.webViewURL, title: $viewModel.webViewTitle),
-                        isActive: $viewModel.isWebViewActive
-                    ) {
-                        SettingsButton(title: "help".localized()) {
-                            viewModel.webViewURL = SettingsLinks.help
-                            viewModel.isWebViewActive = true
-                            viewModel.webViewTitle = "help"
-                        }
-                    }
-                    
-                    // About Us
-                    NavigationLink(
-                        destination: WebView(url: $viewModel.webViewURL, title: $viewModel.webViewTitle),
-                        isActive: $viewModel.isWebViewActive
-                    ) {
-                        SettingsButton(title: "aboutUs".localized()) {
-                            viewModel.webViewURL = SettingsLinks.aboutUs
-                            viewModel.isWebViewActive = true
-                            viewModel.webViewTitle = "aboutUs"
-                        }
-                    }
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 29)
+                    .padding(.horizontal, 10)
+                
                 .loader(isLoading: $viewModel.isLoading)
+                .loader(isLoading: $profileViewModel.isLoading)
+                .showAlert(title: profileViewModel.alertTitle.localized(), isPresented: $profileViewModel.isAlertPresented, message: profileViewModel.alertMessage?.localized() ?? "")
             }
+        }
+        .onAppear() {
+            profileViewModel.getUserDetail()
+            profileViewModel.observeGetUserEvent()
         }
         .fullScreenCover(isPresented: $isLoginModalPresented) {
             MQLSignInView(isModalPresented: $isLoginModalPresented)
         }
-        
+    }
+    
+    // MARK: - FUNCTIONS
+    func getAppVersion() -> String {
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return appVersion
+        }
+        return "Unknown"
+    }
+    
+    func getBuildNumber() -> String {
+        if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            return buildNumber
+        }
+        return "Unknown"
     }
 }
 

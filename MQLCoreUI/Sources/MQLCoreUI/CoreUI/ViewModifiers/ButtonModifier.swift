@@ -26,7 +26,7 @@ struct ButtonModifier: ViewModifier {
             .frame(maxWidth: .infinity)
             .foregroundColor(theme.colors.buttonTextPrimary)
             .frame(height: 50)
-            .background(RoundedRectangle(cornerRadius: 15).fill(theme.colors.primary))
+            .background(RoundedRectangle(cornerRadius: 8).fill(theme.colors.primary))
             .font(theme.typography.h4)
     }
 }
